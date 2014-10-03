@@ -1,0 +1,134 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALL_SEC_FROM_FST_TO_FAT2	boot.asm	/^ALL_SEC_FROM_FST_TO_FAT2	equ	19 - 2$/;"	d
+ALL_SEC_FROM_FST_TO_FAT2	loader.asm	/^ALL_SEC_FROM_FST_TO_FAT2	equ	19 - 2$/;"	d
+ASM	Makefile	/^ASM	= nasm$/;"	m
+ASMFLAG	Makefile	/^ASMFLAG	= -f elf$/;"	m
+BASE_KERNEL	loader.asm	/^BASE_KERNEL	equ	08000h$/;"	d
+BASE_LOADER	boot.asm	/^BASE_LOADER			equ	09000h$/;"	d
+BASE_PAGEDIR	loader.asm	/^BASE_PAGEDIR			equ	100000h$/;"	d
+BASE_PAGETBL	loader.asm	/^BASE_PAGETBL			equ	101000h$/;"	d
+BASE_STACK	boot.asm	/^BASE_STACK	equ		0x7c00$/;"	d
+BASE_STACK	loader.asm	/^BASE_STACK	equ	0100h	;原理跟boot.asm里面的一样$/;"	d
+FST_SEC_IN_ROOT_DIR	boot.asm	/^FST_SEC_IN_ROOT_DIR		equ	19$/;"	d
+FST_SEC_IN_ROOT_DIR	loader.asm	/^FST_SEC_IN_ROOT_DIR		equ	19$/;"	d
+KERNEL_SIZE	loader.asm	/^KERNEL_SIZE	dd	0$/;"	d
+LABEL_CMP_FILENAME	boot.asm	/^LABEL_CMP_FILENAME:$/;"	l
+LABEL_CMP_FILENAME	loader.asm	/^LABEL_CMP_FILENAME:$/;"	l
+LABEL_DATA	loader.asm	/^LABEL_DATA:$/;"	l
+LABEL_DESC_FLAT_C	loader.asm	/^LABEL_DESC_FLAT_C:	Descriptor 0,		0fffffh, DA_CR | DA_32 | DA_LIMIT_4K$/;"	l
+LABEL_DESC_FLAT_RW	loader.asm	/^LABEL_DESC_FLAT_RW:	Descriptor 0,		0fffffh, DA_DRW | DA_32 | DA_LIMIT_4K$/;"	l
+LABEL_DESC_VIDEO	loader.asm	/^LABEL_DESC_VIDEO:	Descriptor 0B8000h,	 0ffffh, DA_DRW | DA_32 | DA_DPL3$/;"	l
+LABEL_DIFFERENT	boot.asm	/^LABEL_DIFFERENT:$/;"	l
+LABEL_DIFFERENT	loader.asm	/^LABEL_DIFFERENT:$/;"	l
+LABEL_EVEN	boot.asm	/^LABEL_EVEN:$/;"	l
+LABEL_EVEN	loader.asm	/^LABEL_EVEN:$/;"	l
+LABEL_EVEN_2	boot.asm	/^LABEL_EVEN_2:$/;"	l
+LABEL_EVEN_2	loader.asm	/^LABEL_EVEN_2:$/;"	l
+LABEL_FILENAME_FOUND	boot.asm	/^LABEL_FILENAME_FOUND:$/;"	l
+LABEL_FILENAME_FOUND	loader.asm	/^LABEL_FILENAME_FOUND:$/;"	l
+LABEL_FILE_END	boot.asm	/^LABEL_FILE_END:$/;"	l
+LABEL_FILE_LOAD_SUCCESSFULLY	loader.asm	/^LABEL_FILE_LOAD_SUCCESSFULLY:$/;"	l
+LABEL_GDT	loader.asm	/^LABEL_GDT:		Descriptor 0,	              0, 0$/;"	l
+LABEL_GOON	loader.asm	/^LABEL_GOON:$/;"	l
+LABEL_GOON_LOADING_FILE	boot.asm	/^LABEL_GOON_LOADING_FILE:$/;"	l
+LABEL_GOON_LOADING_KERNEL	loader.asm	/^LABEL_GOON_LOADING_KERNEL:$/;"	l
+LABEL_GOTO_NEXT_SECTOR	boot.asm	/^LABEL_GOTO_NEXT_SECTOR:$/;"	l
+LABEL_GOTO_NEXT_SEC_IN_ROOT_DIR	loader.asm	/^LABEL_GOTO_NEXT_SEC_IN_ROOT_DIR:$/;"	l
+LABEL_GO_ON	boot.asm	/^LABEL_GO_ON:$/;"	l
+LABEL_NOKERNEL	loader.asm	/^LABEL_NOKERNEL:$/;"	l
+LABEL_NO_LOADERBIN	boot.asm	/^LABEL_NO_LOADERBIN:$/;"	l
+LABEL_PM_START	loader.asm	/^LABEL_PM_START:$/;"	l
+LABEL_SEARCH_FOR_KERNELBIN	loader.asm	/^LABEL_SEARCH_FOR_KERNELBIN:$/;"	l
+LABEL_SEARCH_FOR_LOADER	boot.asm	/^LABEL_SEARCH_FOR_LOADER:$/;"	l
+LABEL_SEARCH_IN_ROOT_DIR_BEGIN	boot.asm	/^LABEL_SEARCH_IN_ROOT_DIR_BEGIN:$/;"	l
+LABEL_SEARCH_IN_ROOT_DIR_BEGIN	loader.asm	/^LABEL_SEARCH_IN_ROOT_DIR_BEGIN:$/;"	l
+LABEL_START	boot.asm	/^LABEL_START:$/;"	l
+LABEL_START	loader.asm	/^LABEL_START:$/;"	l
+LD	Makefile	/^LD	= ld$/;"	m
+LDFLAG	Makefile	/^LDFLAG	= -s$/;"	m
+NAME_KERNEL	loader.asm	/^NAME_KERNEL	db	"KERNEL  BIN"$/;"	d
+NAME_LOADER	boot.asm	/^NAME_LOADER		db	"LOADER  BIN", 0$/;"	d
+NR_SEC_IN_ROOTDIR	boot.asm	/^NR_SEC_IN_ROOTDIR		equ	14$/;"	d
+NR_SEC_IN_ROOT_DIR	loader.asm	/^NR_SEC_IN_ROOT_DIR		equ	14$/;"	d
+OFFSET_KERNEL	loader.asm	/^OFFSET_KERNEL	equ	0h$/;"	d
+OFFSET_LOADER	boot.asm	/^OFFSET_LOADER			equ	0100h$/;"	d
+SEC_NO_OF_FAT1	boot.asm	/^SEC_NO_OF_FAT1			equ	1$/;"	d
+SEC_NO_OF_FAT1	loader.asm	/^SEC_NO_OF_FAT1			equ	1$/;"	d
+TARGIT	Makefile	/^TARGIT	= boot.bin loader.bin kernel.bin$/;"	m
+_baseaddr_hign	loader.asm	/^		_baseaddr_hign:	dd	0$/;"	d
+_baseaddr_low	loader.asm	/^		_baseaddr_low:	dd	0$/;"	d
+_disp_pos	loader.asm	/^	_disp_pos:		dd	(80 * 6 + 0) * 2$/;"	d
+_len_high	loader.asm	/^		_len_high:	dd	0$/;"	d
+_len_low	loader.asm	/^		_len_low:	dd	0$/;"	d
+_memchk_buf	loader.asm	/^	_memchk_buf:		times	256	db	0$/;"	l
+_memsize	loader.asm	/^	_memsize:		dd	0$/;"	d
+_nr_mcr	loader.asm	/^	_nr_mcr:			dd	0$/;"	d
+_start	kernel.asm	/^_start:$/;"	l
+_str_memtitle	loader.asm	/^	_str_memtitle:		db	"BASEADDR_LOW BASEADDR_HIGH LEN_LOW    LEN_HIGN  TYPE", 0$/;"	d
+_str_ramsize	loader.asm	/^	_str_ramsize:		db	"RAM SIZE : ", 0$/;"	d
+_str_return	loader.asm	/^	_str_return:		db	0Ah, 0$/;"	d
+_struct_ard	loader.asm	/^	_struct_ard:$/;"	l
+_type	loader.asm	/^		_type		dd	0$/;"	d
+baseaddr_hign	loader.asm	/^		baseaddr_hign	equ	BaseOfLoaderPhyAddr + _baseaddr_hign$/;"	d
+baseaddr_low	loader.asm	/^		baseaddr_low	equ	BaseOfLoaderPhyAddr + _baseaddr_low$/;"	d
+cur_sec	boot.asm	/^cur_sec			dw	0$/;"	d
+cur_sec	loader.asm	/^cur_sec		dw	0$/;"	d
+dec	boot.asm	/^		dec	dx$/;"	d
+dec	loader.asm	/^	dec	dx$/;"	d
+disp_meninfo	loader.asm	/^disp_meninfo:$/;"	l
+disp_pos	loader.asm	/^	disp_pos		equ	BaseOfLoaderPhyAddr + _disp_pos$/;"	d
+dw	boot.asm	/^dw	0xaa55$/;"	l
+gdt_len	loader.asm	/^gdt_len		equ	$ - LABEL_GDT$/;"	d
+gdtr	loader.asm	/^gdtr		dw	gdt_len$/;"	d
+get_next_clu	boot.asm	/^get_next_clu:$/;"	l
+get_next_clu	loader.asm	/^get_next_clu:$/;"	l
+global	kernel.asm	/^global _start$/;"	l
+inc	boot.asm	/^		inc	di$/;"	d
+inc	loader.asm	/^	inc	di$/;"	d
+is_odd	boot.asm	/^is_odd			db	0$/;"	d
+is_odd	loader.asm	/^is_odd		db	0$/;"	d
+kill_motor	loader.asm	/^kill_motor:$/;"	l
+len_high	loader.asm	/^		len_high	equ	BaseOfLoaderPhyAddr + _len_high$/;"	d
+len_low	loader.asm	/^		len_low		equ	BaseOfLoaderPhyAddr + _len_low$/;"	d
+len_str	boot.asm	/^len_str			equ	9$/;"	d
+len_str	loader.asm	/^len_str		equ	9$/;"	d
+memchk_buf	loader.asm	/^	memchk_buf		equ	BaseOfLoaderPhyAddr + _memchk_buf$/;"	d
+memsize	loader.asm	/^	memsize			equ	BaseOfLoaderPhyAddr + _memsize$/;"	d
+mul	boot.asm	/^	mul	dh$/;"	d
+mul	loader.asm	/^	mul	dh$/;"	d
+nr_mcr	loader.asm	/^	nr_mcr			equ	BaseOfLoaderPhyAddr + _nr_mcr$/;"	d
+nr_sec_unread	boot.asm	/^nr_sec_unread		dw	14$/;"	d
+nr_sec_unread	loader.asm	/^nr_sec_unread	dw	14$/;"	d
+org	boot.asm	/^org		0x7c00$/;"	l
+org	loader.asm	/^org	0100h$/;"	l
+pop	boot.asm	/^	pop	dx$/;"	d
+pop	loader.asm	/^	pop	dx$/;"	d
+print_int	boot.asm	/^print_int:$/;"	l
+push	boot.asm	/^	push	dx$/;"	d
+push	loader.asm	/^	push	dx$/;"	d
+puts	boot.asm	/^puts:$/;"	l
+puts	loader.asm	/^puts:$/;"	l
+readsec	boot.asm	/^readsec:$/;"	l
+readsec	loader.asm	/^readsec:$/;"	l
+readtimes	boot.asm	/^readtimes		dw	0$/;"	d
+selector_flat_c	loader.asm	/^selector_flat_c		equ	LABEL_DESC_FLAT_C - LABEL_GDT$/;"	d
+selector_flat_rw	loader.asm	/^selector_flat_rw	equ	LABEL_DESC_FLAT_RW - LABEL_GDT$/;"	d
+selector_video	loader.asm	/^selector_video		equ	LABEL_DESC_VIDEO - LABEL_GDT + SA_RPL3$/;"	d
+setup_paging	loader.asm	/^setup_paging:$/;"	l
+str_boot	boot.asm	/^str_boot		db	"Booting  "$/;"	d
+str_loading	loader.asm	/^str_loading:	db	"LOADING  "$/;"	d
+str_memtitle	loader.asm	/^	str_memtitle		equ	BaseOfLoaderPhyAddr + _str_memtitle$/;"	d
+str_nokernel	loader.asm	/^str_nokernel	db	"No Kernel"$/;"	d
+str_noloader	boot.asm	/^str_noloader		db	"No loader"$/;"	d
+str_ramsize	loader.asm	/^	str_ramsize		equ	BaseOfLoaderPhyAddr + _str_ramsize$/;"	d
+str_ready	boot.asm	/^str_ready		db	"ready.   "$/;"	d
+str_ready	loader.asm	/^str_ready	db	"Ready.   "$/;"	d
+str_return	loader.asm	/^	str_return		equ	BaseOfLoaderPhyAddr + _str_return$/;"	d
+struct_ard	loader.asm	/^	struct_ard		equ	BaseOfLoaderPhyAddr + _struct_ard$/;"	d
+times	boot.asm	/^times	510 - ($ - $$)	db	0$/;"	l
+type	loader.asm	/^		type		equ	BaseOfLoaderPhyAddr + _type$/;"	d
