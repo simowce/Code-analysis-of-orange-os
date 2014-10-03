@@ -2,9 +2,9 @@
 ASM	= nasm
 LD	= ld
 ASMFLAG	= -f elf
-LDFLAG	= -s
+LDFLAG	= -s -Ttext 0x30400 -m elf_i386
 
-TARGIT	= boot.bin loader.bin kernel.bin
+TARGIT	= boot.bin loader.bin kernel.o kernel.bin
 
 all : $(TARGIT) start
 
@@ -14,10 +14,11 @@ boot.bin : boot.asm
 loader.bin : loader.asm lib.inc
 	$(ASM) -o $@ $<
 
-kernel.bin : kernel.asm
+kernel.o : kernel.asm
 	$(ASM) $(ASMFLAG) -o $@ $<
-	$(LD) $(LDFLAG) -o $@ $<
 
+kernel.bin : kernel.o
+	$(LD) $(LDFLAG) -o $@ $<
 start:
 	dd if=boot.bin of=a.img bs=512 count=1 conv=notrunc
 	sudo mount -o loop a.img /mnt/floppy/

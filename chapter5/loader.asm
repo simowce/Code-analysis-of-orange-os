@@ -294,8 +294,11 @@ LABEL_PM_START:
 
 	mov	ah, 0Fh
 	mov	al, 'P'
-	mov	[gs : ((80 * 10) + 0) * 2], ax
-	jmp	$
+	mov	[gs : ((80 * 0) + 39) * 2], ax
+	;jmp	$
+	call	init_kernel
+
+	jmp	selector_flat_c:KernelEntryPointPhyAddr
 
 %include "lib.inc"
 
@@ -385,6 +388,30 @@ setup_paging:
 	jmp	short .3
 .3:
 	nop
+
+	ret
+
+init_kernel:
+	xor	esi, esi
+	mov	cx, word [BaseOfKernelFilePhyAddr + 2Ch]
+	movzx	ecx, cx
+	mov	esi, [BaseOfKernelFilePhyAddr + 1Ch]
+	add	esi, BaseOfKernelFilePhyAddr
+.begin:
+	mov	eax, [esi + 0]
+	cmp	eax, 0
+	jz	.noaction
+	push	dword [esi + 010h]
+	mov	eax, [esi + 04h]
+	add	eax, BaseOfKernelFilePhyAddr
+	push	eax
+	push	dword [esi + 08h]
+	call	memcpy
+	add	esp, 12
+.noaction:
+	add	esi, 020h
+	dec	ecx
+	jnz	.begin
 
 	ret
 
