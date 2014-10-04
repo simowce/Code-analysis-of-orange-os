@@ -1,3 +1,7 @@
-*.bin
-*.txt
-tags
+!*.asm
+!*.c
+!.inc
+!.h
+!.img
+!Makefile
+
