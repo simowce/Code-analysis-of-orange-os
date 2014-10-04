@@ -1,0 +1,451 @@
+org	0100h
+
+BASE_STACK	equ	0100h	;原理跟boot.asm里面的一样
+BASE_KERNEL	equ	08000h
+OFFSET_KERNEL	equ	0h
+
+	jmp	LABEL_START
+
+%include "fat12hdr.inc"
+%include "load.inc"
+%include "pm.inc"
+
+LABEL_GDT:		Descriptor 0,	              0, 0
+LABEL_DESC_FLAT_C:	Descriptor 0,		0fffffh, DA_CR | DA_32 | DA_LIMIT_4K
+LABEL_DESC_FLAT_RW:	Descriptor 0,		0fffffh, DA_DRW | DA_32 | DA_LIMIT_4K
+LABEL_DESC_VIDEO:	Descriptor 0B8000h,	 0ffffh, DA_DRW | DA_32 | DA_DPL3
+
+gdt_len		equ	$ - LABEL_GDT
+gdtr		dw	gdt_len
+		dd	BaseOfLoaderPhyAddr + LABEL_GDT
+
+selector_flat_c		equ	LABEL_DESC_FLAT_C - LABEL_GDT
+selector_flat_rw	equ	LABEL_DESC_FLAT_RW - LABEL_GDT
+selector_video		equ	LABEL_DESC_VIDEO - LABEL_GDT + SA_RPL3
+
+LABEL_START:
+	mov	ax, cs
+	mov	ds, ax
+	mov	es, ax
+	mov	ss, ax
+	mov	sp, BASE_STACK
+
+	mov	dh, 0
+	call	puts
+
+	mov	ebx, 0
+	mov	di, _memchk_buf
+.loop_memchk:
+	mov	eax, 0E820h
+	mov	ecx, 20
+	mov	edx, 0534D4150h
+	int	15h
+	jc	.memchk_fail
+	add	di, 20
+	inc	dword [_nr_mcr]
+	cmp	ebx, 0
+	jne	.loop_memchk
+	jmp	.memchk_ok
+.memchk_fail:
+	mov	dword [_nr_mcr], 0
+.memchk_ok:
+
+	mov	word [cur_sec], FST_SEC_IN_ROOT_DIR
+	xor	ah, ah
+	xor	dl, dl
+	int	13h
+LABEL_SEARCH_IN_ROOT_DIR_BEGIN:
+	cmp	word [nr_sec_unread], 0
+	jz	LABEL_NOKERNEL
+	dec	word [nr_sec_unread]
+	mov	ax, BASE_KERNEL
+	mov	es, ax
+	mov	bx, OFFSET_KERNEL
+	mov	ax, [cur_sec]
+	mov	cl, 1
+	call	readsec
+
+	mov	si, NAME_KERNEL
+	mov	di, OFFSET_KERNEL
+	cld
+	mov	dx, 10h
+LABEL_SEARCH_FOR_KERNELBIN:
+	cmp	dx, 0
+	jz	LABEL_GOTO_NEXT_SEC_IN_ROOT_DIR
+	dec	dx
+	mov	cx, 11
+LABEL_CMP_FILENAME:
+	cmp	cx, 0
+	jz	LABEL_FILENAME_FOUND
+	dec	cx
+	lodsb
+	cmp	al, [es:di]
+	jz	LABEL_GOON
+	jmp	LABEL_DIFFERENT
+
+LABEL_GOON:
+	inc	di
+	jmp	LABEL_CMP_FILENAME
+
+LABEL_DIFFERENT:
+	and	di, 0FFE0h	;使di指向该条目最开始的地方
+	add	di, 20h
+	mov	si, NAME_KERNEL
+	jmp	LABEL_SEARCH_FOR_KERNELBIN
+
+LABEL_GOTO_NEXT_SEC_IN_ROOT_DIR:
+	add	word [cur_sec], 1
+	jmp	LABEL_SEARCH_IN_ROOT_DIR_BEGIN
+
+LABEL_NOKERNEL:
+	mov	dh, 2
+	call	puts
+	jmp	$
+
+LABEL_FILENAME_FOUND:
+	mov	ax, NR_SEC_IN_ROOT_DIR
+	and	di, 0FFE0h
+
+	push	eax
+	mov	eax, [es : di + 01Ch]
+	mov	dword [KERNEL_SIZE], eax
+	pop	ax
+	add	di, 01Ah
+	mov	cx, word [es : di]
+	push	cx
+	add	cx, ax
+	add	cx, ALL_SEC_FROM_FST_TO_FAT2
+	mov	ax, BASE_KERNEL
+	mov	es, ax
+	mov	bx, OFFSET_KERNEL
+	mov	ax, cx
+
+LABEL_GOON_LOADING_KERNEL:
+	push	ax
+	push	bx
+	mov	ah, 0Eh
+	mov	al, '.'
+	mov	bl, 0Fh
+	int	10h
+	pop	bx
+	pop	ax
+
+	mov	cl, 1
+	call	readsec
+	pop	ax
+	call	get_next_clu
+	cmp	ax, 0FFFh
+	jz	LABEL_FILE_LOAD_SUCCESSFULLY
+	push	ax
+	mov	dx, NR_SEC_IN_ROOT_DIR
+	add	ax, dx
+	add	ax, ALL_SEC_FROM_FST_TO_FAT2
+	add	bx, [BPB_BytsPerSec]
+	jmp	LABEL_GOON_LOADING_KERNEL
+LABEL_FILE_LOAD_SUCCESSFULLY:
+	call	kill_motor
+
+	mov	dh, 1
+	call	puts
+
+	lgdt	[gdtr]
+	cli
+
+	in	al, 92h
+	or	al, 02H
+	out	92h, al
+
+	mov	eax, cr0
+	or	eax, 1
+	mov	cr0, eax
+
+	jmp	dword selector_flat_c : (BaseOfLoaderPhyAddr + LABEL_PM_START)
+
+;macro
+FST_SEC_IN_ROOT_DIR		equ	19
+ALL_SEC_FROM_FST_TO_FAT2	equ	19 - 2
+NR_SEC_IN_ROOT_DIR		equ	14
+SEC_NO_OF_FAT1			equ	1
+BASE_PAGETBL			equ	101000h
+BASE_PAGEDIR			equ	100000h
+;variable
+cur_sec		dw	0
+nr_sec_unread	dw	14
+NAME_KERNEL	db	"KERNEL  BIN"
+KERNEL_SIZE	dd	0
+is_odd		db	0
+len_str		equ	9
+str_loading:	db	"LOADING  "
+str_ready	db	"Ready.   "
+str_nokernel	db	"No Kernel"
+
+kill_motor:
+	push	dx
+	mov	dx, 03F2h
+	mov	al, 0
+	out	dx, al
+	pop	dx
+	ret
+
+readsec:
+	;在调用这个函数之前，ax被赋予要度的扇区号，cl被赋予要度的扇区数
+	;说句题外话，这个函数是十分典型的 stdcall 函数调用,即函数自身清理堆栈
+	push	bp
+	mov	bp, sp
+	sub	esp, 2
+
+	mov	byte [bp - 2], cl	;对应上面的 sub esp, 2 即在堆栈留出两个字节来保存 cl
+	push	bx
+	mov	bl, [BPB_SecPerTrk]
+	div	bl			;al 是商，ah 是余数
+	inc	ah
+	mov	cl, ah
+	mov	dh, al
+	shr	al, 1
+	mov	ch, al
+	and	dh, 1
+	pop	bx
+	mov	dl, [BS_DrvNum]
+.goon_reading:
+	mov	ah, 2
+	mov	al, byte [bp - 2]
+	int	0x13
+	jc	.goon_reading
+
+	add	esp, 2			;上面减掉2，这里就增加2
+	pop	bp			;恢复堆栈
+
+	ret
+
+get_next_clu:
+	push	es
+	push	bx
+	push	ax
+	mov	ax, BASE_KERNEL
+	sub	ax, 0100h
+	mov	es, ax
+	pop	ax
+	mov	byte [is_odd], 0
+	mov	bx, 3
+	mul	bx
+	mov	bx, 2
+	div	bx
+	cmp	dx, 0
+	jz	LABEL_EVEN
+	mov	byte [is_odd], 1
+LABEL_EVEN:
+	xor	dx, dx
+	mov	bx, [BPB_BytsPerSec]
+	div	bx
+	push	dx
+	mov	bx, 0
+	add	ax, SEC_NO_OF_FAT1
+	mov	cl, 2
+	call	readsec
+
+	pop	dx
+	add	bx, dx
+	mov	ax, [es:bx]
+	cmp	byte [is_odd], 1
+	jnz	LABEL_EVEN_2
+	shr	ax, 4
+LABEL_EVEN_2:
+	and	ax, 0FFFh
+
+	pop	bx
+	pop	es
+	ret
+
+puts:
+	mov	ax, len_str
+	mul	dh
+	add	ax, str_loading
+	mov	bp, ax
+	mov	ax, ds
+	mov	es, ax
+	mov	cx, len_str
+	mov	ax, 01301h
+	mov	bx, 0007h
+	mov	dl, 0
+	int	10h
+	ret
+
+
+
+[SECTION .s32]
+ALIGN	32
+[BITS	32]
+LABEL_PM_START:
+	mov	ax, selector_video
+	mov	gs, ax
+
+	mov	ax, selector_flat_rw
+	mov	ds, ax
+	mov	es, ax
+	mov	ss, ax
+	mov	sp, topofstack
+
+	push	str_memtitle
+	call	disp_str
+	add	esp, 4
+
+	call	disp_meninfo
+	call	setup_paging
+
+	mov	ah, 0Fh
+	mov	al, 'P'
+	mov	[gs : ((80 * 0) + 39) * 2], ax
+	;jmp	$
+	call	init_kernel
+
+	jmp	selector_flat_c:KernelEntryPointPhyAddr
+
+%include "lib.inc"
+
+disp_meninfo:
+	push	esi
+	push	edi
+	push	ecx
+
+	mov	esi, memchk_buf	
+	mov	ecx, [nr_mcr]
+.loop:
+	mov	edx, 5
+	mov	edi, struct_ard
+.1:
+	push	dword [esi]
+	call	disp_int
+	pop	eax
+	stosd
+	add	esi, 4
+	dec	edx
+	cmp	edx, 0
+	jnz	.1
+	call	disp_return
+	cmp	dword [type], 1
+	jne	.2
+	mov	eax, [baseaddr_low]
+	add	eax, [len_low]
+	cmp	eax, [memsize]
+	jb	.2
+	mov	[memsize], eax
+.2:
+	loop	.loop
+
+	call	disp_return
+	push	str_ramsize
+	call	disp_str
+	add	esp, 4
+
+	push	dword [memsize]
+	call	disp_int
+	add	esp, 4
+
+	pop	ecx
+	pop	edi
+	pop	esi
+	ret
+
+setup_paging:
+	xor	edx, edx
+	mov	eax, [memsize]
+	mov	ebx, 400000h
+	div	ebx
+	mov	ecx, eax
+	test	edx, edx
+	jz	.no_remainder
+	inc	ecx
+.no_remainder:
+	push	ecx
+
+	mov	ax, selector_flat_rw
+	mov	es, ax
+	mov	edi, BASE_PAGEDIR
+	xor	eax, eax
+	mov	eax, BASE_PAGETBL | PG_P | PG_USU | PG_RWW
+.1:
+	stosd
+	add	eax, 4096
+	loop	.1
+
+	pop	eax
+	mov	ebx, 1024
+	mul	ebx
+	mov	ecx, eax
+	mov	edi, BASE_PAGETBL
+	xor	eax, eax
+	mov	eax, PG_P | PG_USU | PG_RWW
+.2:
+	stosd
+	add	eax, 4096
+	loop	.2
+
+	mov	eax, BASE_PAGEDIR
+	mov	cr3, eax
+	mov	eax, cr0
+	or	eax, 80000000h
+	mov	cr0, eax
+	jmp	short .3
+.3:
+	nop
+
+	ret
+
+init_kernel:
+	xor	esi, esi
+	mov	cx, word [BaseOfKernelFilePhyAddr + 2Ch]
+	movzx	ecx, cx
+	mov	esi, [BaseOfKernelFilePhyAddr + 1Ch]
+	add	esi, BaseOfKernelFilePhyAddr
+.begin:
+	mov	eax, [esi + 0]
+	cmp	eax, 0
+	jz	.noaction
+	push	dword [esi + 010h]
+	mov	eax, [esi + 04h]
+	add	eax, BaseOfKernelFilePhyAddr
+	push	eax
+	push	dword [esi + 08h]
+	call	memcpy
+	add	esp, 12
+.noaction:
+	add	esi, 020h
+	dec	ecx
+	jnz	.begin
+
+	ret
+
+[SECTION .data1]
+ALIGN	32
+LABEL_DATA:
+	_str_memtitle:		db	"BASEADDRL BASEADDRH LENGTHLOW LENGTHH TYPE", 0Ah, 0
+	_str_ramsize:		db	"RAM SIZE : ", 0
+	_str_return:		db	0Ah, 0
+
+	_nr_mcr:			dd	0
+	_disp_pos:		dd	(80 * 6 + 0) * 2
+	_memsize:		dd	0
+	_struct_ard:
+		_baseaddr_low:	dd	0
+		_baseaddr_hign:	dd	0
+		_len_low:	dd	0
+		_len_high:	dd	0
+		_type		dd	0
+	_memchk_buf:		times	256	db	0
+
+	str_memtitle		equ	BaseOfLoaderPhyAddr + _str_memtitle
+	str_ramsize		equ	BaseOfLoaderPhyAddr + _str_ramsize
+	str_return		equ	BaseOfLoaderPhyAddr + _str_return
+	disp_pos		equ	BaseOfLoaderPhyAddr + _disp_pos
+	memsize			equ	BaseOfLoaderPhyAddr + _memsize
+	nr_mcr			equ	BaseOfLoaderPhyAddr + _nr_mcr
+	struct_ard		equ	BaseOfLoaderPhyAddr + _struct_ard
+		baseaddr_low	equ	BaseOfLoaderPhyAddr + _baseaddr_low
+		baseaddr_hign	equ	BaseOfLoaderPhyAddr + _baseaddr_hign
+		len_low		equ	BaseOfLoaderPhyAddr + _len_low
+		len_high	equ	BaseOfLoaderPhyAddr + _len_high
+		type		equ	BaseOfLoaderPhyAddr + _type
+	memchk_buf		equ	BaseOfLoaderPhyAddr + _memchk_buf
+
+STACK_SPACE:		times	1024	db	0
+topofstack		equ	BaseOfLoaderPhyAddr + $
