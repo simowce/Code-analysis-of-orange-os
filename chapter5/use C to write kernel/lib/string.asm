@@ -10,8 +10,8 @@ memcpy:
 	pop	ecx
 
 	mov	edi, [ebp + 8]
-	mov	esi, [ebp + 16]
-	mov	ecx, [ebp + 24]
+	mov	esi, [ebp + 12]
+	mov	ecx, [ebp + 16]
 
 .1:
 	cmp	ecx, 0

@@ -20,6 +20,7 @@ _start:
 
 	sgdt	[gdt_ptr]
 	call	cstart
+	jmp	$
 	lgdt	[gdt_ptr]
 
 	jmp	SELECTOR_KERNEL_CS:csinit

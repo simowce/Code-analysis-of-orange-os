@@ -21,6 +21,8 @@ TARGIT	= $(KERNELBOOT) $(OBJS) $(KERNEL)
 
 all : $(TARGIT) start
 
+clean : rm -f $(OBJS) $(KERNELBOOT) $(KERNEL)
+
 boot/boot.bin : boot/boot.asm boot/include/load.inc boot/include/fat12hdr.inc
 	$(ASM) $(ASMBFLAG) -o $@ $<
 
