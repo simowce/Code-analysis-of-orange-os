@@ -6,8 +6,8 @@
 megs: 32
 
 # filename of ROM images
-romimage: file=/home/silence-simple/bochs-2.6.6/bios/BIOS-bochs-latest
-vgaromimage: file=/home/silence-simple/bochs-2.6.6/bios/VGABIOS-lgpl-latest
+romimage: file=/home/simowce/bochs-2.6.6/bios/BIOS-bochs-latest
+vgaromimage: file=/home/simowce/bochs-2.6.6/bios/VGABIOS-lgpl-latest
 
 # what disk images will be used 
 floppya: 1_44=a.img, status=inserted
