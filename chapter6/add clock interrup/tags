@@ -1,0 +1,532 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALL_SEC_FROM_FST_TO_FAT2	./boot/boot.asm	/^ALL_SEC_FROM_FST_TO_FAT2	equ	19 - 2$/;"	d
+ALL_SEC_FROM_FST_TO_FAT2	./boot/loader.asm	/^ALL_SEC_FROM_FST_TO_FAT2	equ	19 - 2$/;"	d
+ASM	./Makefile	/^ASM		= nasm$/;"	m
+ASMBFLAG	./Makefile	/^ASMBFLAG	= -I boot\/include\/$/;"	m
+ASMKFLAG	./Makefile	/^ASMKFLAG	= -I include\/ -f elf$/;"	m
+BASE_KERNEL	./boot/loader.asm	/^BASE_KERNEL	equ	08000h$/;"	d
+BASE_LOADER	./boot/boot.asm	/^BASE_LOADER			equ	09000h$/;"	d
+BASE_PAGEDIR	./boot/loader.asm	/^BASE_PAGEDIR			equ	100000h$/;"	d
+BASE_PAGETBL	./boot/loader.asm	/^BASE_PAGETBL			equ	101000h$/;"	d
+BASE_STACK	./boot/boot.asm	/^BASE_STACK	equ		0x7c00$/;"	d
+BASE_STACK	./boot/loader.asm	/^BASE_STACK	equ	0100h	;原理跟boot.asm里面的一样$/;"	d
+CC	./Makefile	/^CC		= gcc$/;"	m
+CFLAG	./Makefile	/^CFLAG		=  -c -fno-builtin -m32 -I include\/ -fno-stack-protector$/;"	m
+DA_32	./include/protect.h	86;"	d
+DA_386CGate	./include/protect.h	104;"	d
+DA_386IGate	./include/protect.h	105;"	d
+DA_386TGate	./include/protect.h	106;"	d
+DA_386TSS	./include/protect.h	103;"	d
+DA_C	./include/protect.h	96;"	d
+DA_CCO	./include/protect.h	98;"	d
+DA_CCOR	./include/protect.h	99;"	d
+DA_CR	./include/protect.h	97;"	d
+DA_DPL0	./include/protect.h	88;"	d
+DA_DPL1	./include/protect.h	89;"	d
+DA_DPL2	./include/protect.h	90;"	d
+DA_DPL3	./include/protect.h	91;"	d
+DA_DR	./include/protect.h	93;"	d
+DA_DRW	./include/protect.h	94;"	d
+DA_DRWA	./include/protect.h	95;"	d
+DA_LDT	./include/protect.h	101;"	d
+DA_LIMIT_4K	./include/protect.h	87;"	d
+DA_TaskGate	./include/protect.h	102;"	d
+DESCRIPTOR	./include/protect.h	/^}DESCRIPTOR;$/;"	t	typeref:struct:s_descriptor
+ENTRYPOINT	./Makefile	/^ENTRYPOINT	= 0x30400$/;"	m
+EXTERN	./include/const.h	13;"	d
+EXTERN	./include/global.h	2;"	d
+EXTERN	./include/global.h	3;"	d
+FALSE	./include/const.h	21;"	d
+FST_SEC_IN_ROOT_DIR	./boot/boot.asm	/^FST_SEC_IN_ROOT_DIR		equ	19$/;"	d
+FST_SEC_IN_ROOT_DIR	./boot/loader.asm	/^FST_SEC_IN_ROOT_DIR		equ	19$/;"	d
+GATE	./include/protect.h	/^}GATE;$/;"	t	typeref:struct:s_gate
+GDT_SIZE	./include/const.h	24;"	d
+GLOBAL_VARIABLES_HERE	./kernel/global.c	1;"	d	file:
+IDT_SIZE	./include/const.h	25;"	d
+INDEX_DUMMY	./include/protect.h	55;"	d
+INDEX_FLAT_C	./include/protect.h	56;"	d
+INDEX_FLAT_RW	./include/protect.h	57;"	d
+INDEX_LDT_FIRST	./include/protect.h	60;"	d
+INDEX_TSS	./include/protect.h	59;"	d
+INDEX_VIDEO	./include/protect.h	58;"	d
+INT_M_CTL	./include/const.h	37;"	d
+INT_M_CTLMASK	./include/const.h	38;"	d
+INT_S_CTL	./include/const.h	39;"	d
+INT_S_CTLMASK	./include/const.h	40;"	d
+INT_VECTOR_BOUNDS	./include/protect.h	114;"	d
+INT_VECTOR_BREAKPOINT	./include/protect.h	112;"	d
+INT_VECTOR_COPROC_ERR	./include/protect.h	124;"	d
+INT_VECTOR_COPROC_NOT	./include/protect.h	116;"	d
+INT_VECTOR_COPROC_SEG	./include/protect.h	118;"	d
+INT_VECTOR_DEBUG	./include/protect.h	110;"	d
+INT_VECTOR_DIVIDE	./include/protect.h	109;"	d
+INT_VECTOR_DOUBLE_FAULT	./include/protect.h	117;"	d
+INT_VECTOR_INVAL_OP	./include/protect.h	115;"	d
+INT_VECTOR_INVAL_TSS	./include/protect.h	119;"	d
+INT_VECTOR_IRQ0	./include/protect.h	126;"	d
+INT_VECTOR_IRQ8	./include/protect.h	127;"	d
+INT_VECTOR_NMI	./include/protect.h	111;"	d
+INT_VECTOR_OVERFLOW	./include/protect.h	113;"	d
+INT_VECTOR_PAGE_FAULT	./include/protect.h	123;"	d
+INT_VECTOR_PROTECTION	./include/protect.h	122;"	d
+INT_VECTOR_SEG_NOT	./include/protect.h	120;"	d
+INT_VECTOR_STACK_FAULT	./include/protect.h	121;"	d
+KERNEL	./Makefile	/^KERNEL		= kernel.bin$/;"	m
+KERNELBOOT	./Makefile	/^KERNELBOOT	= boot\/boot.bin boot\/loader.bin$/;"	m
+KERNEL_SIZE	./boot/loader.asm	/^KERNEL_SIZE	dd	0$/;"	d
+LABEL_CMP_FILENAME	./boot/boot.asm	/^LABEL_CMP_FILENAME:$/;"	l
+LABEL_CMP_FILENAME	./boot/loader.asm	/^LABEL_CMP_FILENAME:$/;"	l
+LABEL_DATA	./boot/loader.asm	/^LABEL_DATA:$/;"	l
+LABEL_DESC_FLAT_C	./boot/loader.asm	/^LABEL_DESC_FLAT_C:	Descriptor 0,		0fffffh, DA_CR | DA_32 | DA_LIMIT_4K$/;"	l
+LABEL_DESC_FLAT_RW	./boot/loader.asm	/^LABEL_DESC_FLAT_RW:	Descriptor 0,		0fffffh, DA_DRW | DA_32 | DA_LIMIT_4K$/;"	l
+LABEL_DESC_VIDEO	./boot/loader.asm	/^LABEL_DESC_VIDEO:	Descriptor 0B8000h,	 0ffffh, DA_DRW | DA_32 | DA_DPL3$/;"	l
+LABEL_DIFFERENT	./boot/boot.asm	/^LABEL_DIFFERENT:$/;"	l
+LABEL_DIFFERENT	./boot/loader.asm	/^LABEL_DIFFERENT:$/;"	l
+LABEL_EVEN	./boot/boot.asm	/^LABEL_EVEN:$/;"	l
+LABEL_EVEN	./boot/loader.asm	/^LABEL_EVEN:$/;"	l
+LABEL_EVEN_2	./boot/boot.asm	/^LABEL_EVEN_2:$/;"	l
+LABEL_EVEN_2	./boot/loader.asm	/^LABEL_EVEN_2:$/;"	l
+LABEL_FILENAME_FOUND	./boot/boot.asm	/^LABEL_FILENAME_FOUND:$/;"	l
+LABEL_FILENAME_FOUND	./boot/loader.asm	/^LABEL_FILENAME_FOUND:$/;"	l
+LABEL_FILE_END	./boot/boot.asm	/^LABEL_FILE_END:$/;"	l
+LABEL_FILE_LOAD_SUCCESSFULLY	./boot/loader.asm	/^LABEL_FILE_LOAD_SUCCESSFULLY:$/;"	l
+LABEL_GDT	./boot/loader.asm	/^LABEL_GDT:		Descriptor 0,	              0, 0$/;"	l
+LABEL_GOON	./boot/loader.asm	/^LABEL_GOON:$/;"	l
+LABEL_GOON_LOADING_FILE	./boot/boot.asm	/^LABEL_GOON_LOADING_FILE:$/;"	l
+LABEL_GOON_LOADING_KERNEL	./boot/loader.asm	/^LABEL_GOON_LOADING_KERNEL:$/;"	l
+LABEL_GOTO_NEXT_SECTOR	./boot/boot.asm	/^LABEL_GOTO_NEXT_SECTOR:$/;"	l
+LABEL_GOTO_NEXT_SEC_IN_ROOT_DIR	./boot/loader.asm	/^LABEL_GOTO_NEXT_SEC_IN_ROOT_DIR:$/;"	l
+LABEL_GO_ON	./boot/boot.asm	/^LABEL_GO_ON:$/;"	l
+LABEL_NOKERNEL	./boot/loader.asm	/^LABEL_NOKERNEL:$/;"	l
+LABEL_NO_LOADERBIN	./boot/boot.asm	/^LABEL_NO_LOADERBIN:$/;"	l
+LABEL_PM_START	./boot/loader.asm	/^LABEL_PM_START:$/;"	l
+LABEL_SEARCH_FOR_KERNELBIN	./boot/loader.asm	/^LABEL_SEARCH_FOR_KERNELBIN:$/;"	l
+LABEL_SEARCH_FOR_LOADER	./boot/boot.asm	/^LABEL_SEARCH_FOR_LOADER:$/;"	l
+LABEL_SEARCH_IN_ROOT_DIR_BEGIN	./boot/boot.asm	/^LABEL_SEARCH_IN_ROOT_DIR_BEGIN:$/;"	l
+LABEL_SEARCH_IN_ROOT_DIR_BEGIN	./boot/loader.asm	/^LABEL_SEARCH_IN_ROOT_DIR_BEGIN:$/;"	l
+LABEL_START	./boot/boot.asm	/^LABEL_START:$/;"	l
+LABEL_START	./boot/loader.asm	/^LABEL_START:$/;"	l
+LD	./Makefile	/^LD		= ld$/;"	m
+LDFLAG	./Makefile	/^LDFLAG		= -s -Ttext $(ENTRYPOINT) -m elf_i386 $/;"	m
+LDT_SIZE	./include/protect.h	73;"	d
+NAME_KERNEL	./boot/loader.asm	/^NAME_KERNEL	db	"KERNEL  BIN"$/;"	d
+NAME_LOADER	./boot/boot.asm	/^NAME_LOADER		db	"LOADER  BIN", 0$/;"	d
+NR_SEC_IN_ROOTDIR	./boot/boot.asm	/^NR_SEC_IN_ROOTDIR		equ	14$/;"	d
+NR_SEC_IN_ROOT_DIR	./boot/loader.asm	/^NR_SEC_IN_ROOT_DIR		equ	14$/;"	d
+NR_TASKS	./include/proc.h	30;"	d
+OBJS	./Makefile	/^OBJS		= kernel\/kernel.o  lib\/kliba.o lib\/string.o kernel\/protect.o lib\/klib.o kernel\/global.o \\$/;"	m
+OFFSET_KERNEL	./boot/loader.asm	/^OFFSET_KERNEL	equ	0h$/;"	d
+OFFSET_LOADER	./boot/boot.asm	/^OFFSET_LOADER			equ	0100h$/;"	d
+PRIVATE	./include/const.h	17;"	d
+PRIVILEGE_KRNL	./include/const.h	28;"	d
+PRIVILEGE_TASK	./include/const.h	29;"	d
+PRIVILEGE_USER	./include/const.h	30;"	d
+PROCESS	./include/proc.h	/^} PROCESS;$/;"	t	typeref:struct:p_proc
+PUBLIC	./include/const.h	16;"	d
+RPL_KRNL	./include/const.h	32;"	d
+RPL_TASK	./include/const.h	33;"	d
+RPL_USER	./include/const.h	34;"	d
+SA_RPL0	./include/protect.h	76;"	d
+SA_RPL1	./include/protect.h	77;"	d
+SA_RPL2	./include/protect.h	78;"	d
+SA_RPL3	./include/protect.h	79;"	d
+SA_RPL_MASK	./include/protect.h	75;"	d
+SA_TIG	./include/protect.h	82;"	d
+SA_TIL	./include/protect.h	83;"	d
+SA_TI_MASK	./include/protect.h	81;"	d
+SEC_NO_OF_FAT1	./boot/boot.asm	/^SEC_NO_OF_FAT1			equ	1$/;"	d
+SEC_NO_OF_FAT1	./boot/loader.asm	/^SEC_NO_OF_FAT1			equ	1$/;"	d
+SELECTOR_DUMMY	./include/protect.h	62;"	d
+SELECTOR_FLAT_C	./include/protect.h	63;"	d
+SELECTOR_FLAT_RW	./include/protect.h	64;"	d
+SELECTOR_KERNEL_CS	./include/protect.h	69;"	d
+SELECTOR_KERNEL_DS	./include/protect.h	70;"	d
+SELECTOR_KERNEL_GS	./include/protect.h	71;"	d
+SELECTOR_LDT_FIRST	./include/protect.h	67;"	d
+SELECTOR_TSS	./include/protect.h	66;"	d
+SELECTOR_VIDEO	./include/protect.h	65;"	d
+STACK_FRAME	./include/proc.h	/^} STACK_FRAME;$/;"	t	typeref:struct:s_stackframe
+STACK_SIZE_TESTA	./include/proc.h	32;"	d
+STACK_SIZE_TOTAL	./include/proc.h	33;"	d
+STACK_SPACE	./boot/loader.asm	/^STACK_SPACE:		times	1024	db	0$/;"	l
+StackSpace	./kernel/kernel.asm	/^StackSpace		resb	2 * 1024$/;"	l
+StackTop	./kernel/kernel.asm	/^StackTop:		; 栈顶$/;"	l
+TARGIT	./Makefile	/^TARGIT	= $(KERNELBOOT) $(OBJS) $(KERNEL)$/;"	m
+TRUE	./include/const.h	20;"	d
+TSS	./include/protect.h	/^} TSS;$/;"	t	typeref:struct:s_tss
+_ORANGES_CONST_H_	./include/const.h	9;"	d
+_ORANGES_PROTECT_H_	./include/protect.h	2;"	d
+_ORANGES_TYPE_H_	./include/type.h	2;"	d
+_baseaddr_hign	./boot/loader.asm	/^		_baseaddr_hign:	dd	0$/;"	d
+_baseaddr_low	./boot/loader.asm	/^		_baseaddr_low:	dd	0$/;"	d
+_disp_pos	./boot/loader.asm	/^	_disp_pos:		dd	(80 * 6 + 0) * 2$/;"	d
+_len_high	./boot/loader.asm	/^		_len_high:	dd	0$/;"	d
+_len_low	./boot/loader.asm	/^		_len_low:	dd	0$/;"	d
+_memchk_buf	./boot/loader.asm	/^	_memchk_buf:		times	256	db	0$/;"	l
+_memsize	./boot/loader.asm	/^	_memsize:		dd	0$/;"	d
+_nr_mcr	./boot/loader.asm	/^	_nr_mcr:			dd	0$/;"	d
+_str_memtitle	./boot/loader.asm	/^	_str_memtitle:		db	"BASEADDRL BASEADDRH LENGTHLOW LENGTHH TYPE", 0Ah, 0$/;"	d
+_str_ramsize	./boot/loader.asm	/^	_str_ramsize:		db	"RAM SIZE : ", 0$/;"	d
+_str_return	./boot/loader.asm	/^	_str_return:		db	0Ah, 0$/;"	d
+_struct_ard	./boot/loader.asm	/^	_struct_ard:$/;"	l
+_type	./boot/loader.asm	/^		_type		dd	0$/;"	d
+attr	./include/protect.h	/^	u8 attr;$/;"	m	struct:s_gate	access:public
+attr1	./include/protect.h	/^	u8 attr1;$/;"	m	struct:s_descriptor	access:public
+backlink	./include/protect.h	/^	u32	backlink;$/;"	m	struct:s_tss	access:public
+base_high	./include/protect.h	/^	u8 base_high;$/;"	m	struct:s_descriptor	access:public
+base_low	./include/protect.h	/^	u16 base_low;$/;"	m	struct:s_descriptor	access:public
+base_mid	./include/protect.h	/^	u8 base_mid;$/;"	m	struct:s_descriptor	access:public
+baseaddr_hign	./boot/loader.asm	/^		baseaddr_hign	equ	BaseOfLoaderPhyAddr + _baseaddr_hign$/;"	d
+baseaddr_low	./boot/loader.asm	/^		baseaddr_low	equ	BaseOfLoaderPhyAddr + _baseaddr_low$/;"	d
+bounds_check	./kernel/kernel.asm	/^bounds_check:$/;"	l
+bounds_check	./kernel/protect.c	/^void	bounds_check();$/;"	p	file:
+breakpoint_exception	./kernel/kernel.asm	/^breakpoint_exception:$/;"	l
+breakpoint_exception	./kernel/protect.c	/^void	breakpoint_exception();$/;"	p	file:
+copr_error	./kernel/kernel.asm	/^copr_error:$/;"	l
+copr_error	./kernel/protect.c	/^void	copr_error();$/;"	p	file:
+copr_not_available	./kernel/kernel.asm	/^copr_not_available:$/;"	l
+copr_not_available	./kernel/protect.c	/^void	copr_not_available();$/;"	p	file:
+copr_seg_overrun	./kernel/kernel.asm	/^copr_seg_overrun:$/;"	l
+copr_seg_overrun	./kernel/protect.c	/^void	copr_seg_overrun();$/;"	p	file:
+cr3	./include/protect.h	/^	u32	cr3;$/;"	m	struct:s_tss	access:public
+cs	./include/proc.h	/^	u32	cs;$/;"	m	struct:s_stackframe	access:public
+cs	./include/protect.h	/^	u32	cs;$/;"	m	struct:s_tss	access:public
+csinit	./kernel/kernel.asm	/^csinit:$/;"	l
+cstart	./kernel/start.c	/^PUBLIC void cstart()$/;"	f
+cur_sec	./boot/boot.asm	/^cur_sec			dw	0$/;"	d
+cur_sec	./boot/loader.asm	/^cur_sec		dw	0$/;"	d
+dcount	./include/protect.h	/^	u8 dcount;$/;"	m	struct:s_gate	access:public
+dec	./boot/boot.asm	/^		dec	dx$/;"	d
+dec	./boot/loader.asm	/^	dec	dx$/;"	d
+delay	./include/proto.h	/^PUBLIC void delay(int times);$/;"	p	signature:(int times)
+delay	./lib/klib.c	/^PUBLIC void delay(int time)$/;"	f	signature:(int time)
+disp_al	./boot/loader.asm	/^disp_al:$/;"	l
+disp_color_str	./include/proto.h	/^PUBLIC void disp_color_str(char *str, int color);$/;"	p	signature:(char *str, int color)
+disp_color_str	./lib/kliba.asm	/^disp_color_str:$/;"	l
+disp_int	./boot/loader.asm	/^disp_int:$/;"	l
+disp_int	./lib/klib.c	/^PUBLIC void disp_int(int input)$/;"	f	signature:(int input)
+disp_meninfo	./boot/loader.asm	/^disp_meninfo:$/;"	l
+disp_pos	./boot/loader.asm	/^	disp_pos		equ	BaseOfLoaderPhyAddr + _disp_pos$/;"	d
+disp_pos	./include/global.h	/^EXTERN	int		disp_pos;$/;"	v
+disp_return	./boot/loader.asm	/^disp_return:$/;"	l
+disp_str	./boot/loader.asm	/^disp_str:$/;"	l
+disp_str	./include/proto.h	/^PUBLIC void disp_str(char *str);$/;"	p	signature:(char *str)
+disp_str	./lib/kliba.asm	/^disp_str:$/;"	l
+divide_error	./kernel/kernel.asm	/^divide_error:$/;"	l
+divide_error	./kernel/protect.c	/^void	divide_error();$/;"	p	file:
+double_fault	./kernel/kernel.asm	/^double_fault:$/;"	l
+double_fault	./kernel/protect.c	/^void	double_fault();$/;"	p	file:
+ds	./include/proc.h	/^	u32	ds;$/;"	m	struct:s_stackframe	access:public
+ds	./include/protect.h	/^	u32	ds;$/;"	m	struct:s_tss	access:public
+dw	./boot/boot.asm	/^dw	0xaa55$/;"	l
+eax	./include/proc.h	/^	u32	eax;$/;"	m	struct:s_stackframe	access:public
+eax	./include/protect.h	/^	u32	eax;$/;"	m	struct:s_tss	access:public
+ebp	./include/proc.h	/^	u32	ebp;$/;"	m	struct:s_stackframe	access:public
+ebp	./include/protect.h	/^	u32	ebp;$/;"	m	struct:s_tss	access:public
+ebx	./include/proc.h	/^	u32	ebx;$/;"	m	struct:s_stackframe	access:public
+ebx	./include/protect.h	/^	u32	ebx;$/;"	m	struct:s_tss	access:public
+ecx	./include/proc.h	/^	u32	ecx;$/;"	m	struct:s_stackframe	access:public
+ecx	./include/protect.h	/^	u32	ecx;$/;"	m	struct:s_tss	access:public
+edi	./include/proc.h	/^	u32	edi;$/;"	m	struct:s_stackframe	access:public
+edi	./include/protect.h	/^	u32	edi;$/;"	m	struct:s_tss	access:public
+edx	./include/proc.h	/^	u32	edx;$/;"	m	struct:s_stackframe	access:public
+edx	./include/protect.h	/^	u32	edx;$/;"	m	struct:s_tss	access:public
+eflags	./include/proc.h	/^	u32	eflags;$/;"	m	struct:s_stackframe	access:public
+eflags	./include/protect.h	/^	u32	eflags;$/;"	m	struct:s_tss	access:public
+eip	./include/proc.h	/^	u32	eip;$/;"	m	struct:s_stackframe	access:public
+eip	./include/protect.h	/^	u32	eip;$/;"	m	struct:s_tss	access:public
+es	./include/proc.h	/^	u32	es;$/;"	m	struct:s_stackframe	access:public
+es	./include/protect.h	/^	u32	es;$/;"	m	struct:s_tss	access:public
+esi	./include/proc.h	/^	u32	esi;$/;"	m	struct:s_stackframe	access:public
+esi	./include/protect.h	/^	u32	esi;$/;"	m	struct:s_tss	access:public
+esp	./include/proc.h	/^	u32	esp;$/;"	m	struct:s_stackframe	access:public
+esp	./include/protect.h	/^	u32	esp;$/;"	m	struct:s_tss	access:public
+esp0	./include/protect.h	/^	u32	esp0;$/;"	m	struct:s_tss	access:public
+esp1	./include/protect.h	/^	u32	esp1;$/;"	m	struct:s_tss	access:public
+esp2	./include/protect.h	/^	u32	esp2;$/;"	m	struct:s_tss	access:public
+exception	./kernel/kernel.asm	/^exception:$/;"	l
+exception_handler	./kernel/protect.c	/^PUBLIC void exception_handler(int vec_no,int err_code,int eip,int cs,int eflags)$/;"	f	signature:(int vec_no,int err_code,int eip,int cs,int eflags)
+extern	./kernel/kernel.asm	/^extern	cstart$/;"	l
+extern	./kernel/kernel.asm	/^extern	disp_pos$/;"	l
+extern	./kernel/kernel.asm	/^extern	exception_handler$/;"	l
+extern	./kernel/kernel.asm	/^extern	gdt_ptr$/;"	l
+extern	./kernel/kernel.asm	/^extern	idt_ptr$/;"	l
+extern	./kernel/kernel.asm	/^extern	kernel_main$/;"	l
+extern	./kernel/kernel.asm	/^extern	p_proc_ready$/;"	l
+extern	./kernel/kernel.asm	/^extern	spurious_irq$/;"	l
+extern	./kernel/kernel.asm	/^extern	tss$/;"	l
+extern	./lib/kliba.asm	/^extern	disp_pos$/;"	l
+fs	./include/proc.h	/^	u32	fs;$/;"	m	struct:s_stackframe	access:public
+fs	./include/protect.h	/^	u32	fs;$/;"	m	struct:s_tss	access:public
+gdt	./include/global.h	/^EXTERN	DESCRIPTOR	gdt[GDT_SIZE];$/;"	v
+gdt_len	./boot/loader.asm	/^gdt_len		equ	$ - LABEL_GDT$/;"	d
+gdt_ptr	./include/global.h	/^EXTERN	u8		gdt_ptr[6];$/;"	v
+gdtr	./boot/loader.asm	/^gdtr		dw	gdt_len$/;"	d
+general_protection	./kernel/kernel.asm	/^general_protection:$/;"	l
+general_protection	./kernel/protect.c	/^void	general_protection();$/;"	p	file:
+get_next_clu	./boot/boot.asm	/^get_next_clu:$/;"	l
+get_next_clu	./boot/loader.asm	/^get_next_clu:$/;"	l
+global	./kernel/kernel.asm	/^global	bounds_check$/;"	l
+global	./kernel/kernel.asm	/^global	breakpoint_exception$/;"	l
+global	./kernel/kernel.asm	/^global	copr_error$/;"	l
+global	./kernel/kernel.asm	/^global	copr_not_available$/;"	l
+global	./kernel/kernel.asm	/^global	copr_seg_overrun$/;"	l
+global	./kernel/kernel.asm	/^global	divide_error$/;"	l
+global	./kernel/kernel.asm	/^global	double_fault$/;"	l
+global	./kernel/kernel.asm	/^global	general_protection$/;"	l
+global	./kernel/kernel.asm	/^global	inval_opcode$/;"	l
+global	./kernel/kernel.asm	/^global	inval_tss$/;"	l
+global	./kernel/kernel.asm	/^global	nmi$/;"	l
+global	./kernel/kernel.asm	/^global	overflow$/;"	l
+global	./kernel/kernel.asm	/^global	page_fault$/;"	l
+global	./kernel/kernel.asm	/^global	restart$/;"	l
+global	./kernel/kernel.asm	/^global	segment_not_present$/;"	l
+global	./kernel/kernel.asm	/^global	single_step_exception$/;"	l
+global	./kernel/kernel.asm	/^global	stack_exception$/;"	l
+global	./kernel/kernel.asm	/^global  hwint00$/;"	l
+global	./kernel/kernel.asm	/^global  hwint01$/;"	l
+global	./kernel/kernel.asm	/^global  hwint02$/;"	l
+global	./kernel/kernel.asm	/^global  hwint03$/;"	l
+global	./kernel/kernel.asm	/^global  hwint04$/;"	l
+global	./kernel/kernel.asm	/^global  hwint05$/;"	l
+global	./kernel/kernel.asm	/^global  hwint06$/;"	l
+global	./kernel/kernel.asm	/^global  hwint07$/;"	l
+global	./kernel/kernel.asm	/^global  hwint08$/;"	l
+global	./kernel/kernel.asm	/^global  hwint09$/;"	l
+global	./kernel/kernel.asm	/^global  hwint10$/;"	l
+global	./kernel/kernel.asm	/^global  hwint11$/;"	l
+global	./kernel/kernel.asm	/^global  hwint12$/;"	l
+global	./kernel/kernel.asm	/^global  hwint13$/;"	l
+global	./kernel/kernel.asm	/^global  hwint14$/;"	l
+global	./kernel/kernel.asm	/^global  hwint15$/;"	l
+global	./kernel/kernel.asm	/^global _start	; 导出 _start$/;"	l
+global	./lib/kliba.asm	/^global	disp_color_str$/;"	l
+global	./lib/kliba.asm	/^global	disp_str$/;"	l
+global	./lib/kliba.asm	/^global	in_byte$/;"	l
+global	./lib/kliba.asm	/^global	out_byte$/;"	l
+global	./lib/string.asm	/^global	memcpy$/;"	l
+global	./lib/string.asm	/^global	memset$/;"	l
+gs	./include/proc.h	/^	u32	gs;$/;"	m	struct:s_stackframe	access:public
+gs	./include/protect.h	/^	u32	gs;$/;"	m	struct:s_tss	access:public
+hwint00	./kernel/kernel.asm	/^hwint00:                ; Interrupt routine for irq 0 (the clock).$/;"	l
+hwint00	./kernel/protect.c	/^void    hwint00();$/;"	p	file:
+hwint01	./kernel/kernel.asm	/^hwint01:                ; Interrupt routine for irq 1 (keyboard)$/;"	l
+hwint01	./kernel/protect.c	/^void    hwint01();$/;"	p	file:
+hwint02	./kernel/kernel.asm	/^hwint02:                ; Interrupt routine for irq 2 (cascade!)$/;"	l
+hwint02	./kernel/protect.c	/^void    hwint02();$/;"	p	file:
+hwint03	./kernel/kernel.asm	/^hwint03:                ; Interrupt routine for irq 3 (second serial)$/;"	l
+hwint03	./kernel/protect.c	/^void    hwint03();$/;"	p	file:
+hwint04	./kernel/kernel.asm	/^hwint04:                ; Interrupt routine for irq 4 (first serial)$/;"	l
+hwint04	./kernel/protect.c	/^void    hwint04();$/;"	p	file:
+hwint05	./kernel/kernel.asm	/^hwint05:                ; Interrupt routine for irq 5 (XT winchester)$/;"	l
+hwint05	./kernel/protect.c	/^void    hwint05();$/;"	p	file:
+hwint06	./kernel/kernel.asm	/^hwint06:                ; Interrupt routine for irq 6 (floppy)$/;"	l
+hwint06	./kernel/protect.c	/^void    hwint06();$/;"	p	file:
+hwint07	./kernel/kernel.asm	/^hwint07:                ; Interrupt routine for irq 7 (printer)$/;"	l
+hwint07	./kernel/protect.c	/^void    hwint07();$/;"	p	file:
+hwint08	./kernel/kernel.asm	/^hwint08:                ; Interrupt routine for irq 8 (realtime clock).$/;"	l
+hwint08	./kernel/protect.c	/^void    hwint08();$/;"	p	file:
+hwint09	./kernel/kernel.asm	/^hwint09:                ; Interrupt routine for irq 9 (irq 2 redirected)$/;"	l
+hwint09	./kernel/protect.c	/^void    hwint09();$/;"	p	file:
+hwint10	./kernel/kernel.asm	/^hwint10:                ; Interrupt routine for irq 10$/;"	l
+hwint10	./kernel/protect.c	/^void    hwint10();$/;"	p	file:
+hwint11	./kernel/kernel.asm	/^hwint11:                ; Interrupt routine for irq 11$/;"	l
+hwint11	./kernel/protect.c	/^void    hwint11();$/;"	p	file:
+hwint12	./kernel/kernel.asm	/^hwint12:                ; Interrupt routine for irq 12$/;"	l
+hwint12	./kernel/protect.c	/^void    hwint12();$/;"	p	file:
+hwint13	./kernel/kernel.asm	/^hwint13:                ; Interrupt routine for irq 13 (FPU exception)$/;"	l
+hwint13	./kernel/protect.c	/^void    hwint13();$/;"	p	file:
+hwint14	./kernel/kernel.asm	/^hwint14:                ; Interrupt routine for irq 14 (AT winchester)$/;"	l
+hwint14	./kernel/protect.c	/^void    hwint14();$/;"	p	file:
+hwint15	./kernel/kernel.asm	/^hwint15:                ; Interrupt routine for irq 15$/;"	l
+hwint15	./kernel/protect.c	/^void    hwint15();$/;"	p	file:
+idt	./include/global.h	/^EXTERN	GATE		idt[IDT_SIZE];$/;"	v
+idt_ptr	./include/global.h	/^EXTERN	u8		idt_ptr[6];$/;"	v
+in_byte	./include/proto.h	/^PUBLIC void in_byte(u16 port);$/;"	p	signature:(u16 port)
+in_byte	./lib/kliba.asm	/^in_byte:$/;"	l
+inc	./boot/boot.asm	/^		inc	di$/;"	d
+inc	./boot/loader.asm	/^	inc	di$/;"	d
+init_8259A	./include/proto.h	/^PUBLIC void init_8259A();$/;"	p	signature:()
+init_8259A	./kernel/i8259.c	/^PUBLIC void init_8259A()$/;"	f
+init_descriptor	./kernel/protect.c	/^PRIVATE void init_descriptor(DESCRIPTOR *p_desc, u32 base, u32 limit, u16 attribute)$/;"	f	signature:(DESCRIPTOR *p_desc, u32 base, u32 limit, u16 attribute)
+init_idt_desc	./kernel/protect.c	/^PRIVATE void init_idt_desc(unsigned char vector, u8 desc_type,$/;"	f	signature:(unsigned char vector, u8 desc_type, int_handler handler, unsigned char privilege)
+init_idt_desc	./kernel/protect.c	/^PRIVATE void init_idt_desc(unsigned char vector, u8 desc_type,$/;"	p	file:	signature:(unsigned char vector, u8 desc_type, int_handler handler, unsigned char privilege)
+init_kernel	./boot/loader.asm	/^init_kernel:$/;"	l
+init_prot	./include/proto.h	/^PUBLIC void init_prot();$/;"	p	signature:()
+init_prot	./kernel/protect.c	/^PUBLIC void init_prot()$/;"	f
+int_handler	./include/type.h	/^typedef void (*int_handler) ();$/;"	t
+inval_opcode	./kernel/kernel.asm	/^inval_opcode:$/;"	l
+inval_opcode	./kernel/protect.c	/^void	inval_opcode();$/;"	p	file:
+inval_tss	./kernel/kernel.asm	/^inval_tss:$/;"	l
+inval_tss	./kernel/protect.c	/^void	inval_tss();$/;"	p	file:
+iobase	./include/protect.h	/^	u16	iobase;$/;"	m	struct:s_tss	access:public
+is_odd	./boot/boot.asm	/^is_odd			db	0$/;"	d
+is_odd	./boot/loader.asm	/^is_odd		db	0$/;"	d
+itoa	./lib/klib.c	/^PUBLIC char * itoa(char * str, int num)$/;"	f	signature:(char * str, int num)
+kernel_esp	./include/proc.h	/^	u32	kernel_esp;$/;"	m	struct:s_stackframe	access:public
+kernel_main	./kernel/main.c	/^PUBLIC int kernel_main()$/;"	f
+kill_motor	./boot/loader.asm	/^kill_motor:$/;"	l
+ldt	./include/protect.h	/^	u32	ldt;$/;"	m	struct:s_tss	access:public
+ldt_sel	./include/proc.h	/^	u16 ldt_sel;$/;"	m	struct:p_proc	access:public
+ldts	./include/proc.h	/^	DESCRIPTOR ldts[LDT_SIZE];$/;"	m	struct:p_proc	access:public
+len_high	./boot/loader.asm	/^		len_high	equ	BaseOfLoaderPhyAddr + _len_high$/;"	d
+len_low	./boot/loader.asm	/^		len_low		equ	BaseOfLoaderPhyAddr + _len_low$/;"	d
+len_str	./boot/boot.asm	/^len_str			equ	9$/;"	d
+len_str	./boot/loader.asm	/^len_str		equ	9$/;"	d
+limit_high_attr2	./include/protect.h	/^	u8 limit_high_attr2;$/;"	m	struct:s_descriptor	access:public
+limit_low	./include/protect.h	/^	u16 limit_low;$/;"	m	struct:s_descriptor	access:public
+memchk_buf	./boot/loader.asm	/^	memchk_buf		equ	BaseOfLoaderPhyAddr + _memchk_buf$/;"	d
+memcpy	./boot/loader.asm	/^memcpy:$/;"	l
+memcpy	./include/string.h	/^PUBLIC void *memcpy(void *p_dst, void *src, int size);$/;"	p	signature:(void *p_dst, void *src, int size)
+memcpy	./lib/string.asm	/^memcpy:$/;"	l
+memset	./include/string.h	/^PUBLIC void memset(void *p_dst, char ch, int size);$/;"	p	signature:(void *p_dst, char ch, int size)
+memset	./lib/string.asm	/^memset:$/;"	l
+memsize	./boot/loader.asm	/^	memsize			equ	BaseOfLoaderPhyAddr + _memsize$/;"	d
+mul	./boot/boot.asm	/^	mul	dh$/;"	d
+mul	./boot/loader.asm	/^	mul	dh$/;"	d
+nmi	./kernel/kernel.asm	/^nmi:$/;"	l
+nmi	./kernel/protect.c	/^void	nmi();$/;"	p	file:
+nr_mcr	./boot/loader.asm	/^	nr_mcr			equ	BaseOfLoaderPhyAddr + _nr_mcr$/;"	d
+nr_sec_unread	./boot/boot.asm	/^nr_sec_unread		dw	14$/;"	d
+nr_sec_unread	./boot/loader.asm	/^nr_sec_unread	dw	14$/;"	d
+offset_high	./include/protect.h	/^	u16 offset_high;$/;"	m	struct:s_gate	access:public
+offset_low	./include/protect.h	/^	u16 offset_low;$/;"	m	struct:s_gate	access:public
+org	./boot/boot.asm	/^org		0x7c00$/;"	l
+org	./boot/loader.asm	/^org	0100h$/;"	l
+out_byte	./include/proto.h	/^PUBLIC void out_byte(u16 port, u8 value);$/;"	p	signature:(u16 port, u8 value)
+out_byte	./lib/kliba.asm	/^out_byte:$/;"	l
+overflow	./kernel/kernel.asm	/^overflow:$/;"	l
+overflow	./kernel/protect.c	/^void	overflow();$/;"	p	file:
+p_name	./include/proc.h	/^	char p_name[16];$/;"	m	struct:p_proc	access:public
+p_proc	./include/proc.h	/^typedef struct p_proc {$/;"	s
+p_proc::ldt_sel	./include/proc.h	/^	u16 ldt_sel;$/;"	m	struct:p_proc	access:public
+p_proc::ldts	./include/proc.h	/^	DESCRIPTOR ldts[LDT_SIZE];$/;"	m	struct:p_proc	access:public
+p_proc::p_name	./include/proc.h	/^	char p_name[16];$/;"	m	struct:p_proc	access:public
+p_proc::pid	./include/proc.h	/^	u32 pid;$/;"	m	struct:p_proc	access:public
+p_proc::regs	./include/proc.h	/^	STACK_FRAME regs;$/;"	m	struct:p_proc	access:public
+p_proc_ready	./include/global.h	/^EXTERN	PROCESS *p_proc_ready;$/;"	v
+page_fault	./kernel/kernel.asm	/^page_fault:$/;"	l
+page_fault	./kernel/protect.c	/^void	page_fault();$/;"	p	file:
+pid	./include/proc.h	/^	u32 pid;$/;"	m	struct:p_proc	access:public
+pop	./boot/boot.asm	/^	pop	dx$/;"	d
+pop	./boot/loader.asm	/^	pop	dx$/;"	d
+pop	./kernel/kernel.asm	/^	pop	ds$/;"	d
+print_int	./boot/boot.asm	/^print_int:$/;"	l
+proc_table	./kernel/global.c	/^PUBLIC PROCESS proc_table[NR_TASKS];$/;"	v
+push	./boot/boot.asm	/^	push	dx$/;"	d
+push	./boot/loader.asm	/^	push	dx$/;"	d
+puts	./boot/boot.asm	/^puts:$/;"	l
+puts	./boot/loader.asm	/^puts:$/;"	l
+readsec	./boot/boot.asm	/^readsec:$/;"	l
+readsec	./boot/loader.asm	/^readsec:$/;"	l
+readtimes	./boot/boot.asm	/^readtimes		dw	0$/;"	d
+regs	./include/proc.h	/^	STACK_FRAME regs;$/;"	m	struct:p_proc	access:public
+restart	./include/proto.h	/^void restart();$/;"	p	signature:()
+restart	./kernel/kernel.asm	/^restart:$/;"	l
+retaddr	./include/proc.h	/^	u32	retaddr;$/;"	m	struct:s_stackframe	access:public
+s_descriptor	./include/protect.h	/^typedef struct s_descriptor$/;"	s
+s_descriptor::attr1	./include/protect.h	/^	u8 attr1;$/;"	m	struct:s_descriptor	access:public
+s_descriptor::base_high	./include/protect.h	/^	u8 base_high;$/;"	m	struct:s_descriptor	access:public
+s_descriptor::base_low	./include/protect.h	/^	u16 base_low;$/;"	m	struct:s_descriptor	access:public
+s_descriptor::base_mid	./include/protect.h	/^	u8 base_mid;$/;"	m	struct:s_descriptor	access:public
+s_descriptor::limit_high_attr2	./include/protect.h	/^	u8 limit_high_attr2;$/;"	m	struct:s_descriptor	access:public
+s_descriptor::limit_low	./include/protect.h	/^	u16 limit_low;$/;"	m	struct:s_descriptor	access:public
+s_gate	./include/protect.h	/^typedef struct s_gate$/;"	s
+s_gate::attr	./include/protect.h	/^	u8 attr;$/;"	m	struct:s_gate	access:public
+s_gate::dcount	./include/protect.h	/^	u8 dcount;$/;"	m	struct:s_gate	access:public
+s_gate::offset_high	./include/protect.h	/^	u16 offset_high;$/;"	m	struct:s_gate	access:public
+s_gate::offset_low	./include/protect.h	/^	u16 offset_low;$/;"	m	struct:s_gate	access:public
+s_gate::selector	./include/protect.h	/^	u16 selector;$/;"	m	struct:s_gate	access:public
+s_stackframe	./include/proc.h	/^typedef struct s_stackframe {$/;"	s
+s_stackframe::cs	./include/proc.h	/^	u32	cs;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::ds	./include/proc.h	/^	u32	ds;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::eax	./include/proc.h	/^	u32	eax;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::ebp	./include/proc.h	/^	u32	ebp;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::ebx	./include/proc.h	/^	u32	ebx;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::ecx	./include/proc.h	/^	u32	ecx;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::edi	./include/proc.h	/^	u32	edi;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::edx	./include/proc.h	/^	u32	edx;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::eflags	./include/proc.h	/^	u32	eflags;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::eip	./include/proc.h	/^	u32	eip;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::es	./include/proc.h	/^	u32	es;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::esi	./include/proc.h	/^	u32	esi;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::esp	./include/proc.h	/^	u32	esp;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::fs	./include/proc.h	/^	u32	fs;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::gs	./include/proc.h	/^	u32	gs;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::kernel_esp	./include/proc.h	/^	u32	kernel_esp;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::retaddr	./include/proc.h	/^	u32	retaddr;$/;"	m	struct:s_stackframe	access:public
+s_stackframe::ss	./include/proc.h	/^	u32	ss;$/;"	m	struct:s_stackframe	access:public
+s_tss	./include/protect.h	/^typedef struct s_tss {$/;"	s
+s_tss::backlink	./include/protect.h	/^	u32	backlink;$/;"	m	struct:s_tss	access:public
+s_tss::cr3	./include/protect.h	/^	u32	cr3;$/;"	m	struct:s_tss	access:public
+s_tss::cs	./include/protect.h	/^	u32	cs;$/;"	m	struct:s_tss	access:public
+s_tss::ds	./include/protect.h	/^	u32	ds;$/;"	m	struct:s_tss	access:public
+s_tss::eax	./include/protect.h	/^	u32	eax;$/;"	m	struct:s_tss	access:public
+s_tss::ebp	./include/protect.h	/^	u32	ebp;$/;"	m	struct:s_tss	access:public
+s_tss::ebx	./include/protect.h	/^	u32	ebx;$/;"	m	struct:s_tss	access:public
+s_tss::ecx	./include/protect.h	/^	u32	ecx;$/;"	m	struct:s_tss	access:public
+s_tss::edi	./include/protect.h	/^	u32	edi;$/;"	m	struct:s_tss	access:public
+s_tss::edx	./include/protect.h	/^	u32	edx;$/;"	m	struct:s_tss	access:public
+s_tss::eflags	./include/protect.h	/^	u32	eflags;$/;"	m	struct:s_tss	access:public
+s_tss::eip	./include/protect.h	/^	u32	eip;$/;"	m	struct:s_tss	access:public
+s_tss::es	./include/protect.h	/^	u32	es;$/;"	m	struct:s_tss	access:public
+s_tss::esi	./include/protect.h	/^	u32	esi;$/;"	m	struct:s_tss	access:public
+s_tss::esp	./include/protect.h	/^	u32	esp;$/;"	m	struct:s_tss	access:public
+s_tss::esp0	./include/protect.h	/^	u32	esp0;$/;"	m	struct:s_tss	access:public
+s_tss::esp1	./include/protect.h	/^	u32	esp1;$/;"	m	struct:s_tss	access:public
+s_tss::esp2	./include/protect.h	/^	u32	esp2;$/;"	m	struct:s_tss	access:public
+s_tss::fs	./include/protect.h	/^	u32	fs;$/;"	m	struct:s_tss	access:public
+s_tss::gs	./include/protect.h	/^	u32	gs;$/;"	m	struct:s_tss	access:public
+s_tss::iobase	./include/protect.h	/^	u16	iobase;$/;"	m	struct:s_tss	access:public
+s_tss::ldt	./include/protect.h	/^	u32	ldt;$/;"	m	struct:s_tss	access:public
+s_tss::ss	./include/protect.h	/^	u32	ss;$/;"	m	struct:s_tss	access:public
+s_tss::ss0	./include/protect.h	/^	u32	ss0;$/;"	m	struct:s_tss	access:public
+s_tss::ss1	./include/protect.h	/^	u32	ss1;$/;"	m	struct:s_tss	access:public
+s_tss::ss2	./include/protect.h	/^	u32	ss2;$/;"	m	struct:s_tss	access:public
+s_tss::trap	./include/protect.h	/^	u16	trap;$/;"	m	struct:s_tss	access:public
+seg2phys	./include/proto.h	/^PUBLIC u32 seg2phys(u16 seg);$/;"	p	signature:(u16 seg)
+seg2phys	./kernel/protect.c	/^PUBLIC u32 seg2phys(u16 seg)$/;"	f	signature:(u16 seg)
+segment_not_present	./kernel/kernel.asm	/^segment_not_present:$/;"	l
+segment_not_present	./kernel/protect.c	/^void	segment_not_present();$/;"	p	file:
+selector	./include/protect.h	/^	u16 selector;$/;"	m	struct:s_gate	access:public
+selector_flat_c	./boot/loader.asm	/^selector_flat_c		equ	LABEL_DESC_FLAT_C - LABEL_GDT$/;"	d
+selector_flat_rw	./boot/loader.asm	/^selector_flat_rw	equ	LABEL_DESC_FLAT_RW - LABEL_GDT$/;"	d
+selector_video	./boot/loader.asm	/^selector_video		equ	LABEL_DESC_VIDEO - LABEL_GDT + SA_RPL3$/;"	d
+setup_paging	./boot/loader.asm	/^setup_paging:$/;"	l
+single_step_exception	./kernel/kernel.asm	/^single_step_exception:$/;"	l
+single_step_exception	./kernel/protect.c	/^void	single_step_exception();$/;"	p	file:
+spurious_irq	./kernel/i8259.c	/^PUBLIC void spurious_irq(int irq)$/;"	f	signature:(int irq)
+ss	./include/proc.h	/^	u32	ss;$/;"	m	struct:s_stackframe	access:public
+ss	./include/protect.h	/^	u32	ss;$/;"	m	struct:s_tss	access:public
+ss0	./include/protect.h	/^	u32	ss0;$/;"	m	struct:s_tss	access:public
+ss1	./include/protect.h	/^	u32	ss1;$/;"	m	struct:s_tss	access:public
+ss2	./include/protect.h	/^	u32	ss2;$/;"	m	struct:s_tss	access:public
+stack_exception	./kernel/kernel.asm	/^stack_exception:$/;"	l
+stack_exception	./kernel/protect.c	/^void	stack_exception();$/;"	p	file:
+str_boot	./boot/boot.asm	/^str_boot		db	"Booting  "$/;"	d
+str_loading	./boot/loader.asm	/^str_loading:	db	"LOADING  "$/;"	d
+str_memtitle	./boot/loader.asm	/^	str_memtitle		equ	BaseOfLoaderPhyAddr + _str_memtitle$/;"	d
+str_nokernel	./boot/loader.asm	/^str_nokernel	db	"No Kernel"$/;"	d
+str_noloader	./boot/boot.asm	/^str_noloader		db	"No loader"$/;"	d
+str_ramsize	./boot/loader.asm	/^	str_ramsize		equ	BaseOfLoaderPhyAddr + _str_ramsize$/;"	d
+str_ready	./boot/boot.asm	/^str_ready		db	"ready.   "$/;"	d
+str_ready	./boot/loader.asm	/^str_ready	db	"Ready.   "$/;"	d
+str_return	./boot/loader.asm	/^	str_return		equ	BaseOfLoaderPhyAddr + _str_return$/;"	d
+struct_ard	./boot/loader.asm	/^	struct_ard		equ	BaseOfLoaderPhyAddr + _struct_ard$/;"	d
+task_stack	./kernel/global.c	/^PUBLIC char task_stack[STACK_SIZE_TOTAL];$/;"	v
+test_a	./include/proto.h	/^void test_a();$/;"	p	signature:()
+test_a	./kernel/main.c	/^void test_a()$/;"	f
+times	./boot/boot.asm	/^times	510 - ($ - $$)	db	0$/;"	l
+topofstack	./boot/loader.asm	/^topofstack		equ	BaseOfLoaderPhyAddr + \$$/;"	d
+trap	./include/protect.h	/^	u16	trap;$/;"	m	struct:s_tss	access:public
+tss	./include/global.h	/^EXTERN	TSS tss;$/;"	v
+type	./boot/loader.asm	/^		type		equ	BaseOfLoaderPhyAddr + _type$/;"	d
+u16	./include/type.h	/^typedef unsigned short u16;$/;"	t
+u32	./include/type.h	/^typedef unsigned int u32;$/;"	t
+u8	./include/type.h	/^typedef unsigned char u8;$/;"	t
+vir2phys	./kernel/protect.c	37;"	d	file:
