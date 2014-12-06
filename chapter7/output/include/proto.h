@@ -28,7 +28,6 @@ PUBLIC void delay(int times);
 /* kernel/kernel.asm */
 void restart();
 PUBLIC void sys_call();
-PUBLIC int get_ticks();
 
 /* kernel/protect.c */
 PUBLIC u32 seg2phys(u16 seg);
@@ -46,9 +45,27 @@ PUBLIC void keyboard_read(TTY *p_tty);
 /* kernel/tty.c */
 PUBLIC void task_tty();
 PUBLIC void in_process(TTY *p_tty, u32 key);
+PUBLIC void tty_write(TTY *p_tty, char *buf, int len);
+PUBLIC int sys_write_system(char *buf, int len, PROCESS *p_proc);
+int vsprintf(char *buf, const char *fmt, va_list args);
+PUBLIC void write(char *buf, int len);
 
 /* kernel/console.c*/
 PUBLIC void out_char(CONSOLE *p_con, char ch);
 PUBLIC void init_console(TTY *p_tty);
 PUBLIC void select_console(int nr_console);
 PUBLIC void scroll_screen(CONSOLE *p_con, int direction);
+
+/* kernel/vsprintf.c*/
+int vsprintf(char *buf, const char *fmt, va_list args);
+
+/* kernel/printf.c*/
+int printf(const char *fmt, ...);
+
+/* kernel/syscall.asm*/
+PUBLIC int get_ticks();
+PUBLIC void write(char *buf, int len);
+
+PUBLIC int get_ticks();
+
+/* lib/klib.c*/

@@ -11,6 +11,7 @@
 global	memcpy
 global	memset
 global	strcpy
+global	strlen
 
 ; ------------------------------------------------------------------------
 ; void* memcpy(void* es:p_dst, void* ds:p_src, int size);
@@ -97,4 +98,20 @@ strcpy:
 	mov	esp, ebp
 	pop	ebp
 
+	ret
+
+strlen:
+	push	ebp
+	mov	ebp, esp
+
+	mov	eax, 0
+	mov	esi, [ebp + 8]
+.1:
+	cmp	byte [esi], 0
+	jz	.2
+	inc	esi
+	inc	eax
+	jmp	.1
+.2:
+	pop	ebp
 	ret

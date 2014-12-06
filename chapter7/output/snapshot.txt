@@ -1,9 +1,9 @@
-Exception! --> #GP General Protection
-         ß
-EFLAGS:0x11096CS:0x8EIP:0x306F4Error code:0xC
-
-
-
+abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdef
+ghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj
+j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj
+ cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj
+ ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcd
+efghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5
 BASEADDRL BASEADDRH LENGTHLOW LENGTHH TYPE
 00000000h 00000000h 0009F000h 00000000h 00000001h
 0009F000h 00000000h 00001000h 00000000h 00000002h
@@ -16,7 +16,7 @@ RAM SIZE : 01FF0000h
 -----"cstart" begins-----
 -----"cstart" ends-----
 ~~~~~~~~~~~ kernel_main ~~~~~~~~~~~~
-B.
+ß
 
 
 

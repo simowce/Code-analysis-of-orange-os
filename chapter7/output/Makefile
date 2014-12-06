@@ -15,13 +15,16 @@ CFLAG		=  -c -fno-builtin -m32 -I include/ -fno-stack-protector
 LDFLAG		= -s -Ttext $(ENTRYPOINT) -m elf_i386 
 OBJS		= kernel/kernel.o  lib/kliba.o lib/string.o kernel/protect.o lib/klib.o kernel/global.o \
 		  kernel/i8259.o  kernel/main.o kernel/start.o kernel/clock.o kernel/syscall.o \
-		  kernel/proc.o kernel/keyboard.o kernel/console.o kernel/tty.o 
+		  kernel/proc.o kernel/keyboard.o kernel/console.o kernel/tty.o kernel/printf.o \
+		  kernel/vsprintf.o
 KERNELBOOT	= boot/boot.bin boot/loader.bin
 KERNEL		= kernel.bin
 
 TARGIT	= $(KERNELBOOT) $(OBJS) $(KERNEL)
 
-all : $(TARGIT) start
+all : $(TARGIT) 
+
+build : start
 
 clean : 
 	rm -f $(OBJS) $(KERNELBOOT) $(KERNEL)
@@ -94,6 +97,16 @@ kernel/tty.o : kernel/tty.c include/type.h include/const.h include/protect.h inc
 
 kernel/console.o : kernel/console.c include/type.h \
 			 include/const.h include/protect.h include/proc.h include/global.h
+	$(CC) $(CFLAG) -o $@ $<
+
+kernel/printf.o : kernel/printf.c include/type.h \
+	 		include/const.h include/protect.h include/tty.h include/console.h \
+	  		include/proc.h include/proto.h include/global.h
+	$(CC) $(CFLAG) -o $@ $<
+
+kernel/vsprintf.o : ./kernel/vsprintf.c include/type.h \
+			 include/const.h include/protect.h include/tty.h include/console.h \
+			 include/proc.h include/proto.h include/global.h
 	$(CC) $(CFLAG) -o $@ $<
 start:
 	dd if=boot/boot.bin of=a.img bs=512 count=1 conv=notrunc

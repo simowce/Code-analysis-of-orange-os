@@ -114,7 +114,7 @@ PUBLIC void in_process(TTY *p_tty, u32 key)
 		case F10:
 		case F11:
 		case F12:
-			if ((key & FLAG_CTRL_L) || (key & FLAG_CTRL_R)) {
+			if ((key & FLAG_SHIFT_L) || (key & FLAG_SHIFT_R)) {
 				select_console(raw_code - F1);
 			}
 			break;
@@ -124,4 +124,19 @@ PUBLIC void in_process(TTY *p_tty, u32 key)
 	}
 }
 
+PUBLIC void tty_write(TTY *p_tty, char *buf, int len)
+{
+	char *p = buf;
+	int i = len;
 
+	while(i) {
+		out_char(p_tty->p_console, *p++);
+		i--;
+	}
+}
+
+PUBLIC int sys_write_system(char *buf, int len, PROCESS *p_proc)
+{
+	tty_write(&tty_table[p_proc->nr_tty], buf, len);
+	return 0;
+}

@@ -3,9 +3,9 @@
 #include "protect.h"
 #include "tty.h"
 #include "console.h"
+#include "proc.h"
 #include "proto.h"
 #include "string.h"
-#include "proc.h"
 #include "global.h"
 
 
@@ -65,3 +65,4 @@ PUBLIC void delay(int time)
 		}
 	}
 }
+

@@ -10,7 +10,6 @@ PUBLIC void scroll_screen(CONSOLE *p_con, int direction);
 
 PRIVATE void set_cursor(unsigned int position)
 {
-
 	disable_int();
 	out_byte(CRTC_ADDR_REG, CURSOR_H);
 	out_byte(CRTC_DATA_REG, (position >> 8) & 0xFF);
@@ -31,8 +30,10 @@ PRIVATE void set_video_start_addr(u32 addr)
 
 PRIVATE void flush(CONSOLE *p_con)
 {
-	set_cursor(p_con->cursor);
-	set_video_start_addr(p_con->current_start_addr);
+	if (is_current_console(p_con)) {
+		set_cursor(p_con->cursor);
+		set_video_start_addr(p_con->current_start_addr);
+	}
 }
 
 PUBLIC void out_char(CONSOLE *p_con, char ch)
@@ -71,7 +72,6 @@ PUBLIC void out_char(CONSOLE *p_con, char ch)
 			p_con->cursor = p_con->original_addr + SCREEN_WIDTH * 
 				((p_con->cursor - p_con->original_addr) / SCREEN_WIDTH + 1);
 
-			disp_int(nr_tab);
 
 			for (i = 0; i < nr_tab; i++) {
 				*(p_vmem++) = ' ';
@@ -151,6 +151,5 @@ PUBLIC void scroll_screen(CONSOLE *p_con, int direction)
 
 	}
 
-	set_video_start_addr(p_con->current_start_addr);
-	set_cursor(p_con->cursor);
+	flush(p_con);
 }

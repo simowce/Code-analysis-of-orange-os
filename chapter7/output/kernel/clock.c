@@ -2,9 +2,9 @@
 #include "const.h"
 #include "tty.h"
 #include "console.h"
-#include "proto.h"
 #include "protect.h"
 #include "proc.h"
+#include "proto.h"
 #include "global.h"
 
 PUBLIC void clock_handler(int irq)

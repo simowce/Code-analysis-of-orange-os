@@ -128,6 +128,9 @@ INT_VECTOR_SEG_NOT	include/protect.h	120;"	d
 INT_VECTOR_STACK_FAULT	include/protect.h	121;"	d
 INT_VECTOR_SYS_CALL	include/protect.h	125;"	d
 INT_VECTOR_SYS_CALL	kernel/syscall.asm	/^INT_VECTOR_SYS_CALL	equ	0x90$/;"	d
+KB_ACK	include/const.h	78;"	d
+KB_CMD	include/keyboard.h	111;"	d
+KB_DATA	include/keyboard.h	112;"	d
 KB_INPUT	include/keyboard.h	/^} KB_INPUT;$/;"	t	typeref:struct:s_kb
 KB_IN_BYTES	include/keyboard.h	1;"	d
 KERNEL	Makefile	/^KERNEL		= kernel.bin$/;"	m
@@ -169,6 +172,7 @@ LABEL_START	boot/loader.asm	/^LABEL_START:$/;"	l
 LD	Makefile	/^LD		= ld$/;"	m
 LDFLAG	Makefile	/^LDFLAG		= -s -Ttext $(ENTRYPOINT) -m elf_i386 $/;"	m
 LDT_SIZE	include/protect.h	73;"	d
+LED_CODE	include/const.h	77;"	d
 LEFT	include/keyboard.h	66;"	d
 MAP_COLS	include/keyboard.h	3;"	d
 MASK_RAW	include/keyboard.h	14;"	d
@@ -176,11 +180,13 @@ NAME_KERNEL	boot/loader.asm	/^NAME_KERNEL	db	"KERNEL  BIN"$/;"	d
 NAME_LOADER	boot/boot.asm	/^NAME_LOADER		db	"LOADER  BIN", 0$/;"	d
 NR_CONSOLES	include/const.h	75;"	d
 NR_IRQ	include/const.h	42;"	d
+NR_PROCS	include/proc.h	46;"	d
 NR_SCAN_CODES	include/keyboard.h	4;"	d
 NR_SEC_IN_ROOTDIR	boot/boot.asm	/^NR_SEC_IN_ROOTDIR		equ	14$/;"	d
 NR_SEC_IN_ROOT_DIR	boot/loader.asm	/^NR_SEC_IN_ROOT_DIR		equ	14$/;"	d
 NR_SYS_CALL	include/const.h	54;"	d
-NR_TASKS	include/proc.h	39;"	d
+NR_TAB	include/console.h	6;"	d
+NR_TASKS	include/proc.h	45;"	d
 NUM_LOCK	include/keyboard.h	38;"	d
 OBJS	Makefile	/^OBJS		= kernel\/kernel.o  lib\/kliba.o lib\/string.o kernel\/protect.o lib\/klib.o kernel\/global.o \\$/;"	m
 OFFSET_KERNEL	boot/loader.asm	/^OFFSET_KERNEL	equ	0h$/;"	d
@@ -238,7 +244,11 @@ SA_RPL_MASK	include/protect.h	75;"	d
 SA_TIG	include/protect.h	82;"	d
 SA_TIL	include/protect.h	83;"	d
 SA_TI_MASK	include/protect.h	81;"	d
+SCREEN_SIZE	include/console.h	5;"	d
+SCREEN_WIDTH	include/console.h	4;"	d
 SCROLL_LOCK	include/keyboard.h	39;"	d
+SCR_DN	include/console.h	3;"	d
+SCR_UP	include/console.h	2;"	d
 SECONDARY_IRQ	include/const.h	47;"	d
 SEC_NO_OF_FAT1	boot/boot.asm	/^SEC_NO_OF_FAT1			equ	1$/;"	d
 SEC_NO_OF_FAT1	boot/loader.asm	/^SEC_NO_OF_FAT1			equ	1$/;"	d
@@ -255,11 +265,11 @@ SHIFT_L	include/keyboard.h	29;"	d
 SHIFT_R	include/keyboard.h	30;"	d
 SLEEP	include/keyboard.h	71;"	d
 STACK_FRAME	include/proc.h	/^} STACK_FRAME;$/;"	t	typeref:struct:s_stackframe
-STACK_SIZE_TESTA	include/proc.h	42;"	d
-STACK_SIZE_TESTB	include/proc.h	43;"	d
-STACK_SIZE_TESTC	include/proc.h	44;"	d
-STACK_SIZE_TOTAL	include/proc.h	45;"	d
-STACK_SIZE_TTY	include/proc.h	41;"	d
+STACK_SIZE_TESTA	include/proc.h	41;"	d
+STACK_SIZE_TESTB	include/proc.h	42;"	d
+STACK_SIZE_TESTC	include/proc.h	43;"	d
+STACK_SIZE_TOTAL	include/proc.h	47;"	d
+STACK_SIZE_TTY	include/proc.h	40;"	d
 STACK_SPACE	boot/loader.asm	/^STACK_SPACE:		times	1024	db	0$/;"	l
 START_ADDR_H	include/const.h	68;"	d
 START_ADDR_L	include/const.h	69;"	d
@@ -416,6 +426,7 @@ extern	kernel/kernel.asm	/^extern	spurious_irq$/;"	l
 extern	kernel/kernel.asm	/^extern	sys_call_table$/;"	l
 extern	kernel/kernel.asm	/^extern	tss$/;"	l
 extern	lib/kliba.asm	/^extern	disp_pos$/;"	l
+flush	kernel/console.c	/^PRIVATE void flush(CONSOLE *p_con)$/;"	f	signature:(CONSOLE *p_con)
 fs	include/proc.h	/^	u32	fs;$/;"	m	struct:s_stackframe	access:public
 fs	include/protect.h	/^	u32	fs;$/;"	m	struct:s_tss	access:public
 gdt	include/global.h	/^EXTERN	DESCRIPTOR	gdt[GDT_SIZE];$/;"	v
@@ -549,7 +560,9 @@ is_odd	boot/boot.asm	/^is_odd			db	0$/;"	d
 is_odd	boot/loader.asm	/^is_odd		db	0$/;"	d
 itoa	lib/klib.c	/^PUBLIC char * itoa(char * str, int num)$/;"	f	signature:(char * str, int num)
 k_reenter	include/global.h	/^EXTERN	u32	k_reenter;$/;"	v
+kb_ack	kernel/keyboard.c	/^PRIVATE void kb_ack()$/;"	f
 kb_in	kernel/keyboard.c	/^PRIVATE KB_INPUT kb_in;$/;"	v
+kb_wait	kernel/keyboard.c	/^PRIVATE void kb_wait()$/;"	f
 kernel_esp	include/proc.h	/^	u32	kernel_esp;$/;"	m	struct:s_stackframe	access:public
 kernel_main	kernel/main.c	/^PUBLIC int kernel_main()$/;"	f
 keyboard_handler	include/proto.h	/^PUBLIC void keyboard_handler();$/;"	p	signature:()
@@ -620,12 +633,13 @@ pop	boot/loader.asm	/^	pop	dx$/;"	d
 pop	kernel/kernel.asm	/^	pop	ds$/;"	d
 print_int	boot/boot.asm	/^print_int:$/;"	l
 priority	include/proc.h	/^	int priority;$/;"	m	struct:p_proc	access:public
-proc_table	kernel/global.c	/^PUBLIC PROCESS proc_table[NR_TASKS];$/;"	v
+proc_table	kernel/global.c	/^PUBLIC PROCESS proc_table[NR_TASKS + NR_PROCS];$/;"	v
 push	boot/boot.asm	/^	push	dx$/;"	d
 push	boot/loader.asm	/^	push	dx$/;"	d
 push	kernel/kernel.asm	/^	push	ds$/;"	d
 put_irq_handler	include/proto.h	/^PUBLIC void put_irq_handler(int irq, irq_handler handler);$/;"	p	signature:(int irq, irq_handler handler)
 put_irq_handler	kernel/i8259.c	/^PUBLIC void put_irq_handler(int irq, irq_handler handler)$/;"	f	signature:(int irq, irq_handler handler)
+put_key	kernel/tty.c	/^PRIVATE void put_key(TTY *p_tty, u32 key)$/;"	f	signature:(TTY *p_tty, u32 key)
 puts	boot/boot.asm	/^puts:$/;"	l
 puts	boot/loader.asm	/^puts:$/;"	l
 readsec	boot/boot.asm	/^readsec:$/;"	l
@@ -719,6 +733,9 @@ s_tty::p_inbuf_tail	include/tty.h	/^	u32 *p_inbuf_tail;$/;"	m	struct:s_tty	acces
 save	kernel/kernel.asm	/^save:$/;"	l
 schedule	kernel/proc.c	/^PUBLIC void schedule()$/;"	f
 scroll_lock	kernel/keyboard.c	/^PRIVATE int scroll_lock;$/;"	v
+scroll_screen	include/proto.h	/^PUBLIC void scroll_screen(CONSOLE *p_con, int direction);$/;"	p	signature:(CONSOLE *p_con, int direction)
+scroll_screen	kernel/console.c	/^PUBLIC void scroll_screen(CONSOLE *p_con, int direction)$/;"	f	signature:(CONSOLE *p_con, int direction)
+scroll_screen	kernel/console.c	/^PUBLIC void scroll_screen(CONSOLE *p_con, int direction);$/;"	p	file:	signature:(CONSOLE *p_con, int direction)
 seg2phys	include/proto.h	/^PUBLIC u32 seg2phys(u16 seg);$/;"	p	signature:(u16 seg)
 seg2phys	kernel/protect.c	/^PUBLIC u32 seg2phys(u16 seg)$/;"	f	signature:(u16 seg)
 segment_not_present	kernel/kernel.asm	/^segment_not_present:$/;"	l
@@ -730,6 +747,8 @@ selector_flat_c	boot/loader.asm	/^selector_flat_c		equ	LABEL_DESC_FLAT_C - LABEL
 selector_flat_rw	boot/loader.asm	/^selector_flat_rw	equ	LABEL_DESC_FLAT_RW - LABEL_GDT$/;"	d
 selector_video	boot/loader.asm	/^selector_video		equ	LABEL_DESC_VIDEO - LABEL_GDT + SA_RPL3$/;"	d
 set_cursor	kernel/console.c	/^PRIVATE void set_cursor(unsigned int position)$/;"	f	signature:(unsigned int position)
+set_leds	kernel/keyboard.c	/^PRIVATE void set_leds()$/;"	f
+set_leds	kernel/keyboard.c	/^PRIVATE void set_leds();$/;"	p	file:
 set_video_start_addr	kernel/console.c	/^PRIVATE void set_video_start_addr(u32 addr)$/;"	f	signature:(u32 addr)
 setup_paging	boot/loader.asm	/^setup_paging:$/;"	l
 shift_l	kernel/keyboard.c	/^PRIVATE int shift_l = 0;$/;"	v
@@ -765,7 +784,7 @@ sys_get_ticks	kernel/proc.c	/^PUBLIC int sys_get_ticks()$/;"	f
 system_call	include/type.h	/^typedef void * system_call;$/;"	t
 task_f	include/type.h	/^typedef void (*task_f) ();$/;"	t
 task_stack	kernel/global.c	/^PUBLIC char task_stack[STACK_SIZE_TOTAL];$/;"	v
-task_table	kernel/global.c	/^PUBLIC TASK task_table[NR_TASKS] = {{task_tty, STACK_SIZE_TTY, "task_tty"},$/;"	v
+task_table	kernel/global.c	/^PUBLIC TASK task_table[NR_TASKS] = {{task_tty, STACK_SIZE_TTY, "task_tty"}};$/;"	v
 task_tty	include/proto.h	/^PUBLIC void task_tty();$/;"	p	signature:()
 task_tty	kernel/tty.c	/^PUBLIC void task_tty()$/;"	f
 test_a	include/proto.h	/^void test_a();$/;"	p	signature:()
@@ -787,5 +806,6 @@ type	boot/loader.asm	/^		type		equ	BaseOfLoaderPhyAddr + _type$/;"	d
 u16	include/type.h	/^typedef unsigned short u16;$/;"	t
 u32	include/type.h	/^typedef unsigned int u32;$/;"	t
 u8	include/type.h	/^typedef unsigned char u8;$/;"	t
+user_proc_table	kernel/global.c	/^PUBLIC TASK user_proc_table[NR_PROCS] = { $/;"	v
 v_mem_limit	include/console.h	/^	unsigned int v_mem_limit;$/;"	m	struct:s_console	access:public
 vir2phys	kernel/protect.c	39;"	d	file:

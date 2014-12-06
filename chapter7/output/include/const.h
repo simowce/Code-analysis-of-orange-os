@@ -51,7 +51,7 @@
 #define	PRINTER_IRQ	7
 #define	AT_WINI_IRQ	14	/* at winchester */
 
-#define NR_SYS_CALL	1
+#define NR_SYS_CALL	2
 
 #define TIMER0		0x40
 #define TIMER_MODE	0x43
