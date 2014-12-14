@@ -1,0 +1,118 @@
+: (                     ): mov dword ptr ss:[esp], 0x00031924 ; c7042424190300
+000312a1: (                     ): call .-2966               ; e86af4ffff
+000312a6: (                     ): mov dword ptr ss:[ebp-12], 0x00032020 ; c745f420200300
+000312ad: (                     ): mov dword ptr ss:[ebp-16], 0x0004b5e0 ; c745f0e0b50400
+000312b4: (                     ): mov dword ptr ss:[ebp-20], 0x0004a8c0 ; c745ecc0a80400
+000312bb: (                     ): mov word ptr ss:[ebp-22], 0x0028 ; 66c745ea2800
+000312c1: (                     ): mov dword ptr ss:[ebp-28], 0x00000000 ; c745e400000000
+000312c8: (                     ): jmp .+237                 ; e9ed000000
+000312cd: (                     ): mov eax, dword ptr ss:[ebp-12] ; 8b45f4
+000312d0: (                     ): lea edx, dword ptr ds:[eax+8] ; 8d5008
+000312d3: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+000312d6: (                     ): add eax, 0x00000068       ; 83c068
+000312d9: (                     ): mov dword ptr ss:[esp+4], edx ; 89542404
+000312dd: (                     ): mov dword ptr ss:[esp], eax ; 890424
+000312e0: (                     ): call .-2715               ; e865f5ffff
+000312e5: (                     ): mov edx, dword ptr ss:[ebp-28] ; 8b55e4
+000312e8: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+000312eb: (                     ): mov dword ptr ds:[eax+100], edx ; 895064
+000312ee: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+000312f1: (                     ): movzx edx, word ptr ss:[ebp-22] ; 0fb755ea
+000312f5: (                     ): mov word ptr ds:[eax+72], dx ; 66895048
+000312f9: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+000312fc: (                     ): add eax, 0x0000004a       ; 83c04a
+000312ff: (                     ): mov dword ptr ss:[esp+8], 0x00000008 ; c744240808000000
+00031307: (                     ): mov dword ptr ss:[esp+4], 0x0004a8e8 ; c7442404e8a80400
+0003130f: (                     ): mov dword ptr ss:[esp], eax ; 890424
+00031312: (                     ): call .-2839               ; e8e9f4ffff
+00031317: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+0003131a: (                     ): mov byte ptr ds:[eax+79], 0xb8 ; c6404fb8
+0003131e: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+00031321: (                     ): add eax, 0x00000052       ; 83c052
+00031324: (                     ): mov dword ptr ss:[esp+8], 0x00000008 ; c744240808000000
+0003132c: (                     ): mov dword ptr ss:[esp+4], 0x0004a8f0 ; c7442404f0a80400
+00031334: (                     ): mov dword ptr ss:[esp], eax ; 890424
+00031337: (                     ): call .-2876               ; e8c4f4ffff
+0003133c: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+0003133f: (                     ): mov byte ptr ds:[eax+87], 0xb2 ; c64057b2
+00031343: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+00031346: (                     ): mov dword ptr ds:[eax+56], 0x00000005 ; c7403805000000
+0003134d: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+00031350: (                     ): mov dword ptr ds:[eax+12], 0x0000000d ; c7400c0d000000
+00031357: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+0003135a: (                     ): mov dword ptr ds:[eax+8], 0x0000000d ; c740080d000000
+00031361: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+00031364: (                     ): mov dword ptr ds:[eax+68], 0x0000000d ; c740440d000000
+0003136b: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+0003136e: (                     ): mov dword ptr ds:[eax+4], 0x0000000d ; c740040d000000
+00031375: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+00031378: (                     ): mov dword ptr ds:[eax], 0x00000019 ; c70019000000
+0003137e: (                     ): mov eax, dword ptr ss:[ebp-12] ; 8b45f4
+00031381: (                     ): mov eax, dword ptr ds:[eax] ; 8b00
+00031383: (                     ): mov edx, eax              ; 89c2
+00031385: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+00031388: (                     ): mov dword ptr ds:[eax+52], edx ; 895034
+0003138b: (                     ): mov edx, dword ptr ss:[ebp-20] ; 8b55ec
+0003138e: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+00031391: (                     ): mov dword ptr ds:[eax+64], edx ; 895040
+00031394: (                     ): mov eax, dword ptr ss:[ebp-16] ; 8b45f0
+00031397: (                     ): mov dword ptr ds:[eax+60], 0x00001202 ; c7403c02120000
+0003139e: (                     ): mov eax, dword ptr ss:[ebp-12] ; 8b45f4
+000313a1: (                     ): mov eax, dword ptr ds:[eax+4] ; 8b4004
+000313a4: (                     ): neg eax                   ; f7d8
+000313a6: (                     ): add dword ptr ss:[ebp-20], eax ; 0145ec
+000313a9: (                     ): add dword ptr ss:[ebp-16], 0x00000078 ; 8345f078
+000313ad: (                     ): add dword ptr ss:[ebp-12], 0x00000028 ; 8345f428
+000313b1: (                     ): add word ptr ss:[ebp-22], 0x0008 ; 668345ea08
+000313b6: (                     ): add dword ptr ss:[ebp-28], 0x00000001 ; 8345e401
+000313ba: (                     ): cmp dword ptr ss:[ebp-28], 0x00000002 ; 837de402
+000313be: (                     ): jle .-247                 ; 0f8e09ffffff
+000313c4: (                     ): mov dword ptr ds:0x0004b640, 0x00000096 ; c70540b6040096000000
+000313ce: (                     ): mov eax, dword ptr ds:0x0004b640 ; a140b60400
+000313d3: (                     ): mov dword ptr ds:0x0004b63c, eax ; a33cb60400
+000313d8: (                     ): mov dword ptr ds:0x0004b6b8, 0x0000005a ; c705b8b604005a000000
+000313e2: (                     ): mov eax, dword ptr ds:0x0004b6b8 ; a1b8b60400
+000313e7: (                     ): mov dword ptr ds:0x0004b6b4, eax ; a3b4b60400
+000313ec: (                     ): mov dword ptr ds:0x0004b730, 0x0000001e ; c70530b704001e000000
+000313f6: (                     ): mov eax, dword ptr ds:0x0004b730 ; a130b70400
+000313fb: (                     ): mov dword ptr ds:0x0004b72c, eax ; a32cb70400
+00031400: (                     ): mov dword ptr ds:0x0004a8c0, 0x00000000 ; c705c0a8040000000000
+0003140a: (                     ): mov dword ptr ds:0x0004b560, 0x00000000 ; c70560b5040000000000
+00031414: (                     ): mov dword ptr ss:[esp+4], 0x00031584 ; c744240484150300
+0003141c: (                     ): mov dword ptr ss:[esp], 0x00000000 ; c7042400000000
+00031423: (                     ): call .-436                ; e84cfeffff
+00031428: (                     ): mov dword ptr ss:[esp], 0x00000000 ; c7042400000000
+0003142f: (                     ): call .-3165               ; e8a3f3ffff
+00031434: (                     ): mov dword ptr ss:[esp+4], 0x00000034 ; c744240434000000
+0003143c: (                     ): mov dword ptr ss:[esp], 0x00000043 ; c7042443000000
+00031443: (                     ): call .-3259               ; e845f3ffff
+00031448: (                     ): mov dword ptr ss:[esp+4], 0x0000009b ; c74424049b000000
+00031450: (                     ): mov dword ptr ss:[esp], 0x00000040 ; c7042440000000
+00031457: (                     ): call .-3279               ; e831f3ffff
+0003145c: (                     ): mov dword ptr ss:[esp+4], 0x0000002e ; c74424042e000000
+00031464: (                     ): mov dword ptr ss:[esp], 0x00000040 ; c7042440000000
+0003146b: (                     ): call .-3299               ; e81df3ffff
+00031470: (                     ): mov dword ptr ds:0x0004b5c0, 0x0004b5e0 ; c705c0b50400e0b50400
+0003147a: (                     ): call .-3495               ; e859f2ffff
+0003147f: (                     ): jmp .-2                   ; ebfe
+00031481: (                     ): push ebp                  ; 55
+00031482: (                     ): mov ebp, esp              ; 89e5
+00031484: (                     ): sub esp, 0x00000028       ; 83ec28
+00031487: (                     ): mov dword ptr ss:[ebp-12], 0x00000000 ; c745f400000000
+0003148e: (                     ): mov dword ptr ss:[esp], 0x0003194a ; c704244a190300
+00031495: (                     ): call .-3466               ; e876f2ffff
+0003149a: (                     ): mov dword ptr ss:[esp], 0x000000c8 ; c70424c8000000
+000314a1: (                     ): call .+273                ; e811010000
+000314a6: (                     ): jmp .-26                  ; ebe6
+000314a8: (                     ): push ebp                  ; 55
+000314a9: (                     ): mov ebp, esp              ; 89e5
+000314ab: (                     ): sub esp, 0x00000028       ; 83ec28
+000314ae: (                     ): mov dword ptr ss:[ebp-12], 0x00000100 ; c745f400010000
+000314b5: (                     ): mov dword ptr ss:[esp], 0x0003194d ; c704244d190300
+000314bc: (                     ): call .-3505               ; e84ff2ffff
+000314c1: (                     ): mov dword ptr ss:[esp], 0x000000c8 ; c70424c8000000
+000314c8: (                     ): call .+234                ; e8ea000000
+000314cd: (                     ): jmp .-26                  ; ebe6
+000314cf: (                     ): push ebp                  ; 55
+000314d0: (                     ): mov ebp, esp              ; 89e5
+

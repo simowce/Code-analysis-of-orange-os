@@ -1,0 +1,25 @@
+abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdef
+ghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj
+j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj
+ cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj
+ ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5abcd
+efghj cdefghj efghj ghj j 0x5abcdefghj cdefghj efghj ghj j 0x5
+BASEADDRL BASEADDRH LENGTHLOW LENGTHH TYPE
+00000000h 00000000h 0009F000h 00000000h 00000001h
+0009F000h 00000000h 00001000h 00000000h 00000002h
+000E8000h 00000000h 00018000h 00000000h 00000002h
+00100000h 00000000h 01EF0000h 00000000h 00000001h
+01FF0000h 00000000h 00010000h 00000000h 00000003h
+FFFC0000h 00000000h 00040000h 00000000h 00000002h
+
+RAM SIZE : 01FF0000h
+-----"cstart" begins-----
+-----"cstart" ends-----
+~~~~~~~~~~~ kernel_main ~~~~~~~~~~~~
+ß
+
+
+
+
+
+
