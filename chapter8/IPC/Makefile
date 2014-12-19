@@ -13,10 +13,10 @@ ASMBFLAG	= -I boot/include/
 
 CFLAG		=  -c -fno-builtin -m32 -I include/ -fno-stack-protector
 LDFLAG		= -s -Ttext $(ENTRYPOINT) -m elf_i386 
-OBJS		= kernel/kernel.o  lib/kliba.o lib/string.o kernel/protect.o lib/klib.o kernel/global.o \
+OBJS		= kernel/kernel.o  lib/kliba.o lib/string.o lib/klib.o kernel/global.o kernel/protect.o \
 		  kernel/i8259.o  kernel/main.o kernel/start.o kernel/clock.o kernel/syscall.o \
 		  kernel/proc.o kernel/keyboard.o kernel/console.o kernel/tty.o kernel/printf.o \
-		  kernel/vsprintf.o lib/misc.o
+		  kernel/vsprintf.o lib/misc.o kernel/systask.o
 KERNELBOOT	= boot/boot.bin boot/loader.bin
 KERNEL		= kernel.bin
 
@@ -112,6 +112,11 @@ kernel/vsprintf.o : ./kernel/vsprintf.c include/type.h \
 lib/misc.o : lib/misc.c  include/type.h \
 			 include/const.h include/tty.h include/console.h include/protect.h \
 	       	         include/proc.h include/proto.h include/global.h
+	$(CC) $(CFLAG) -o $@ $<
+
+kernel/systask.o : kernel/systask.c  include/type.h \
+			 include/const.h include/tty.h include/console.h include/protect.h \
+			 include/proc.h include/proto.h include/global.h
 	$(CC) $(CFLAG) -o $@ $<
 
 start:

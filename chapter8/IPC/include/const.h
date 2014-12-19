@@ -103,4 +103,24 @@ void assert_failure(char *exp, char *file, char *base_file, int line);
 #define proc2pid(x) (x - proc_table)
 
 #define INDEX_LDT_RW	1
+
+#define ANY		(NR_TASKS + NR_PROCS + 10)
+#define NO_TASK		(NR_TASKS + NR_PROCS + 20)
+#define SEND		1
+#define RECEIVE		2
+#define BOTH		3
+
+#define INTERRUPT	-10
+
+#define SENDING		0x02
+#define RECEIVING	0x04
+
+enum {
+	HARD_INT = 1,
+	GET_TICKS,
+}
+
+#define	RETVAL		u.m3.m3i1
+
+#define TASK_SYS	1
 #endif /* _ORANGES_CONST_H_ */

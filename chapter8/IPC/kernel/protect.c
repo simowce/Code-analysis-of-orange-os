@@ -251,24 +251,24 @@ PUBLIC void exception_handler(int vec_no,int err_code,int eip,int cs,int eflags)
 
 	/* 通过打印空格的方式清空屏幕的前五行，并把 disp_pos 清零 */
 	disp_pos = 0;
-	for(i=0;i<80*5;i++){
-		disp_str(" ");
-	}
-	disp_pos = 0;
+	/*for(i=0;i<80*5;i++){*/
+		/*disp_str(" ");*/
+	/*}*/
+	/*disp_pos = 0;*/
 
-	disp_color_str("Exception! --> ", text_color);
-	disp_color_str(err_msg[vec_no], text_color);
-	disp_color_str("\n\n", text_color);
-	disp_color_str("EFLAGS:", text_color);
-	disp_int(eflags);
-	disp_color_str("CS:", text_color);
-	disp_int(cs);
-	disp_color_str("EIP:", text_color);
-	disp_int(eip);
+	/*disp_color_str("Exception! --> ", text_color);*/
+	/*disp_color_str(err_msg[vec_no], text_color);*/
+	/*disp_color_str("\n\n", text_color);*/
+	/*disp_color_str("EFLAGS:", text_color);*/
+	/*disp_int(eflags);*/
+	/*disp_color_str("CS:", text_color);*/
+	/*disp_int(cs);*/
+	/*disp_color_str("EIP:", text_color);*/
+	/*disp_int(eip);*/
 
-	if(err_code != 0xFFFFFFFF){
-		disp_color_str("Error code:", text_color);
-		disp_int(err_code);
-	}
+	/*if(err_code != 0xFFFFFFFF){*/
+		/*disp_color_str("Error code:", text_color);*/
+		/*disp_int(err_code);*/
+	/*}*/
 }
 

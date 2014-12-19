@@ -1,0 +1,222 @@
+#include "type.h"
+#include "const.h"
+#include "tty.h"
+#include "console.h"
+#include "protect.h"
+#include "proc.h"
+#include "global.h"
+
+PRIVATE int msg_send(PROCESS *p, int src, MESSAGE *m);
+PRIVATE int msg_receive(PROCESS *p, int src, MESSAGE *m);
+PRIVATE void block(PROCESS *p);
+PRIVATE void unblock(PROCESS *p);
+PRIVATE void reset_message(MESSAGE *m);
+
+PUBLIC int sys_get_ticks()
+{
+	return ticks;
+}
+
+PUBLIC void schedule()
+{
+	PROCESS *p;
+	int greatest_ticks = 0;
+
+	while (!greatest_ticks) {
+		for (p = proc_table; p < proc_table + NR_TASKS + NR_PROCS; p++) {
+			if (p->e_flags == 0) {
+				if (p->ticks > greatest_ticks) {
+					greatest_ticks = p->ticks;
+					p_proc_ready = p;
+				}
+			}
+		}
+
+		if (!greatest_ticks) {
+			for (p = proc_table; p < proc_table + NR_TASKS + NR_PROCS; p++) {
+				p->ticks = p->priority;
+			}
+		}
+	}
+
+}
+
+PUBLIC int ldt_seg_linear(PROCESS *p, int idx)
+{
+	DESCRIPTOR *d = &p->ldts[idx];
+
+	return d->base_high << 24 | d->base_mid << 16 | d->base_low;
+}
+
+PUBLIC void *va2la(int pid, void *va)
+{
+	PROCESS *p = &proc_table[pid];
+	u32 seg_base = ldt_seg_linear(p, INDEX_LDT_RW);
+	u32 la = seg_base + (u32)va;
+
+	return (void *)la;
+}
+
+PUBLIC int sys_sendrec(int function, int src_dest, MESSAGE *m, PROCESS *p_proc)
+{
+	assert(k_reenter == 0);
+	assert((src_dest >= 0 && src_dest < NR_TASKS + NR_PROCS) ||
+	       (src_dest == ANY) ||
+	       (src_dest == INTERRUPT));
+
+	int ret = 0;
+	int caller = proc2pid(p_proc);
+	MESSAGE *m_la = (MESSAGE *)va2la(caller, m);
+	m_la->source = caller;
+
+	if (function == SEND) {
+		ret = msg_send(p_proc, src_dest, m);
+		if (ret)
+			return ret;
+	} else if (function == RECEIVE) {
+		ret = msg_receive(p_proc, src_dest, m);
+		if (ret) 
+			return ret;
+	} else {
+		panic("{sys_sendrec} invalid function"
+		      "%d (SEND:%d RECEIVE:%d).", function, SEND, RECEIVE);
+	}
+
+	return 0;
+}
+
+
+PUBLIC void reset_message(MESSAGE *m)
+{
+	memset(m, 0, sizeof(m));
+}
+
+PRIVATE void block(PROCESS *p)
+{
+	assert(p->e_flags);
+	schedule();
+}
+
+PRIVATE void unblock(PROCESS *p)
+{
+	assert(p->e_flags == 0);
+}
+
+PRIVATE int msg_send(PROCESS *current, int src, MESSAGE *m)
+{
+	PROCESS *p_src = proc_table + src;
+	PROCESS *sender = current;
+	
+	disp_str("-----------------");
+	disp_int(src);
+	disp_str("-----------------\n");
+
+	if (p_src->e_flags == RECEIVING &&
+	    (p_src->p_recvfrom == proc2pid(current) ||
+	     p_src->p_recvfrom == ANY)) { //接收目标表示它正处于接收状态，而且接收目标的对象即使当前进程或者是任意进程
+		memcpy(p_src->p_msg,
+		       m,
+		       sizeof(MESSAGE)); //传递消息体
+		p_src->e_flags &= ~(RECEIVING); //消除接收目标的接收状态
+		p_src->p_msg = 0; //清空接收目标的消息指针
+		p_src->p_recvfrom = NO_TASK; //接收目标的接收过程完成，清除
+		unblock(p_src);
+	} else {
+		sender->e_flags |= SENDING;
+		sender->p_sendto = src;
+		sender->p_msg = m;
+
+		if (p_src->q_sending) {
+			PROCESS *p = p_src->q_sending;
+			while (p->next_sending) {
+				p = p->next_sending;
+			}
+			p->next_sending = sender;
+		}
+		disp_str("//////////////FAIL////////////////");
+		disp_str("\n");
+		block(sender);
+	}
+
+	return 0;
+}
+
+PRIVATE int msg_receive(PROCESS *current, int src, MESSAGE *m)
+{
+	PROCESS *p_who_wanna_receive = current;
+	PROCESS *prev;
+	PROCESS *p_from;
+	disp_str("||||||||||||||||||||||");
+	disp_int(src);
+	disp_str("||||||||||||||||||||||\n");
+	int copyok = 0;
+	
+	if (src == ANY) {
+		if (p_who_wanna_receive->q_sending) {
+			copyok = 1;
+			p_from = p_who_wanna_receive->q_sending;
+		}
+	} else if (src >= 0 && src < NR_TASKS + NR_PROCS) {
+		p_from = &(proc_table[src]);
+
+		if ((p_from->e_flags & SENDING) &&
+		    (p_from->p_sendto == proc2pid(p_who_wanna_receive))) {
+			PROCESS *p = p_who_wanna_receive->q_sending;
+
+			while (p_from != p) {
+				prev = p;
+				p = p->next_sending;
+			}
+			copyok = 1;
+		}
+	}
+
+	if (copyok) {
+		if (p_from == p_who_wanna_receive->q_sending) {
+			p_who_wanna_receive->q_sending = p_from->next_sending;
+			p_from->next_sending = 0;
+		} else {
+			prev->next_sending = p_from->next_sending;
+			p_from->next_sending = 0;
+		}
+		memcpy(p_who_wanna_receive->p_msg, p_from->p_msg, sizeof(MESSAGE));
+		p_from->e_flags &= ~(SENDING);
+		p_from->p_sendto = NO_TASK;
+		p_from->p_msg = 0;
+	} else {
+		p_who_wanna_receive->e_flags |= RECEIVING;
+		p_who_wanna_receive->p_recvfrom = src;
+		p_who_wanna_receive->p_msg = m;
+
+		disp_str("\\\\\\\\\\\\\\\\\\sibaile\\\\\\\\");
+		disp_str("\n");
+		block(p_who_wanna_receive);
+	}
+}
+
+PUBLIC int send_recv(int function, int src, MESSAGE *msg)
+{
+	int ret = 0;
+
+	if (function == RECEIVE)
+		memset(msg, 0, sizeof(MESSAGE));
+	
+	switch (function) {
+	case BOTH:
+		ret = sendrec(SEND, src, msg);
+		if (ret == 0)
+			ret = sendrec(RECEIVE, src, msg);
+
+		break;
+	case SEND:
+	case RECEIVE:
+		ret = sendrec(function, src, msg);
+		break;
+	default:
+		assert((function == BOTH) || (function == SEND) ||
+		       (function == RECEIVE));
+		break;
+	}
+
+	return ret;
+}

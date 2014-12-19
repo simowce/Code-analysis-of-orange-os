@@ -37,6 +37,8 @@ PUBLIC u32 seg2phys(u16 seg);
 
 /* kernel/proc.c */
 PUBLIC int sys_get_ticks();
+PUBLIC int sys_sendrec(int function, int src_dest, MESSAGE *m, PROCESS *p_proc);
+PUBLIC int send_recv(int function, int src, MESSAGE *m);
 
 /* kernel/keyboard.c */
 PUBLIC void init_keyboard();
@@ -65,7 +67,6 @@ int vsprintf(char *buf, const char *fmt, va_list args);
 int printf(const char *fmt, ...);
 
 /* kernel/syscall.asm*/
-PUBLIC int get_ticks();
 PUBLIC void write(char *buf, int len);
 
 PUBLIC int get_ticks();
@@ -75,4 +76,6 @@ PUBLIC int get_ticks();
 /* lib/misc.c*/
 PUBLIC void spin(char *func_name);
 
+/* kernel/systask.c */
+PUBLIC void task_sys();
 #define printl printf

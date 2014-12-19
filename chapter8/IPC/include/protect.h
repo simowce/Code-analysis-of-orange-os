@@ -1,7 +1,5 @@
-#ifndef _ORANGES_PROTECT_H_
-#define _ORANGES_PROTECT_H_
-
-typedef struct s_descriptor
+;
+struct s_descriptor
 {
 	u16 limit_low;
 	u16 base_low;
@@ -9,7 +7,9 @@ typedef struct s_descriptor
 	u8 attr1;
 	u8 limit_high_attr2;
 	u8 base_high;
-}DESCRIPTOR;
+};
+
+typedef struct s_descriptor DESCRIPTOR;
 
 typedef struct s_gate
 {
@@ -126,5 +126,3 @@ typedef struct s_tss {
 
 #define INT_VECTOR_IRQ0		0x20
 #define INT_VECTOR_IRQ8		0x28
-
-#endif

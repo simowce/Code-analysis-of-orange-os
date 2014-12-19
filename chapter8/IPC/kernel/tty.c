@@ -55,7 +55,6 @@ PUBLIC void task_tty()
 		for (p_tty = tty_table; p_tty < TTY_END; p_tty++) {
 			tty_do_read(p_tty);
 			tty_do_write(p_tty);
-			panic("IN TTY");
 		}
 	}
 }

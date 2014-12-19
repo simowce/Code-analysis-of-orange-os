@@ -25,9 +25,13 @@ PUBLIC void clock_handler(int irq)
 
 PUBLIC void milli_delay(int milli_sec)
 {
-	int t = get_ticks();
-
-	while (((get_ticks() - t) * 1000 / HZ) < milli_sec) {}
+	int t = get_ticks(__FILE__, __LINE__);
+	/*disp_str("HALIDEFENGEXIAN-----");*/
+	/*disp_int(t);*/
+	/*disp_str("-------HALIDEFENGEXIAN\n");*/
+	
+	while (((get_ticks(__FILE__, __LINE__) - t) * 1000 / HZ) < milli_sec) {}
+	/*disp_str("NEVER HAVE A DREAM COME TRUE!!!\n");*/
 }
 
 PUBLIC void init_clock()

@@ -1,5 +1,6 @@
 #define TTY_IN_BYTES	256
 
+;
 struct s_console;
 
 typedef struct s_tty {
