@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/TASK
+~MSle0~/sys
 
 # Last Substitute String:
 $
@@ -73,104 +73,70 @@ $
 
 # Registers:
 "0	CHAR	0
-	struct descriptor
+	{task_tty, STACK_SIZE_TTY, "task_tty"}
 ""1	LINE	0
-			disp_int(get_tic(__FILE__, __LINE__));
+		disp_str("********************");
+		disp_int(src_dest);
+		disp_str("*******************\n");
 "2	LINE	0
-		struct task* p_task;
+							  get_ticks
 "3	LINE	0
-	
+				panic("IN TTY");
 "4	LINE	0
-	
+							  sys_get_ticks,
 "5	LINE	0
-		
+			assert(0);
 "6	LINE	0
-		assert(0);
-		assert(0);
-		assert(0);
+			if ()
 "7	LINE	0
-		assert(0);
+			ret = sendrec(SEND, src, msg);
 "8	LINE	0
-		disp_str("FILE:");
-		disp_str(__FILE__);
-		disp_str("\n");
-		disp_str("LINE:");
-		disp_int(__LINE__);
-		disp_str("\n");
-"9	CHAR	0
-	disp_str("FILE:");
-		disp_str(__FILE__);
-		disp_str("\n");
-		disp_str("LINE:");
-		disp_int(__LINE__);
-		disp_str("\n");
 	
+"9	LINE	0
 	
 "j	CHAR	0
 	j;;
 "q	CHAR	0
 	
 "-	CHAR	0
-	ks
+	5
 
 # File marks:
-'0  43  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
-'1  81  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
-'2  80  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
-'3  1  0  ~/Documents/orange/chapter8/a/include/const.h
-'4  222  0  ~/proc.c
-'5  22  18  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
-'6  21  11  ~/.zshrc
-'7  16  40  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/global.c
-'8  39  1  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proc.h
-'9  25  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proc.h
+'0  142  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
+'1  4  97  /etc/updatedb.conf
+'2  10  0  /var/lib/mlocate/mlocate.db
+'3  1  0  /var/lib/mlocate/mlocate.db
+'4  15  0  /etc/fstab
+'5  52  0  ~/Documents/orange/chapter8/a/kernel/clock.c
+'6  80  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
+'7  1  0  ~/Documents/orange/chapter8/a/include/const.h
+'8  222  0  ~/proc.c
+'9  25  18  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
 
 # Jumplist (newest first):
--'  43  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  82  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
+-'  142  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
 -'  98  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
 -'  138  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/tty.c
 -'  62  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proc.h
--'  81  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  265  2  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  266  2  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  107  2  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  105  10  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  90  25  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  46  0  ~/Code-analysis-of-orange-os/chapter8/IPC/1.viminfo
--'  87  16  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  279  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  3  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  260  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/protect.c
--'  1  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/protect.c
--'  181  14  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  35  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  41  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  31  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  38  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  37  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  34  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  40  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  42  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  33  46  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
--'  180  38  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  179  2  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  200  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  76  3  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  74  4  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
--'  17  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/clock.c
+-'  4  97  /etc/updatedb.conf
+-'  1  0  /etc/updatedb.conf
+-'  10  0  /var/lib/mlocate/mlocate.db
+-'  1  0  /var/lib/mlocate/mlocate.db
+-'  15  0  /etc/fstab
+-'  1  0  /etc/fstab
+-'  52  0  ~/Documents/orange/chapter8/a/kernel/clock.c
+-'  1  0  ~/Documents/orange/chapter8/a/kernel/clock.c
 -'  80  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
--'  96  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
--'  137  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/tty.c
 -'  383  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
 -'  3  31  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
 -'  486  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
+-'  137  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/tty.c
 -'  1  0  ~/Documents/orange/chapter8/a/include/const.h
 -'  222  0  ~/proc.c
 -'  1  0  ~/proc.c
--'  22  18  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
--'  24  3  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
--'  23  21  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
+-'  25  18  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
+-'  27  3  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
+-'  26  21  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
 -'  10  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
 -'  12  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
 -'  11  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
@@ -179,6 +145,7 @@ $
 -'  21  11  ~/.zshrc
 -'  1  0  ~/.zshrc
 -'  16  40  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/global.c
+-'  3  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
 -'  14  11  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
 -'  112  2  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
 -'  119  1  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
@@ -193,22 +160,48 @@ $
 -'  2  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/tty.c
 -'  14  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/syscall.asm
 -'  13  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/syscall.asm
--'  1  0  ~/main.c
--'  1  0  ~/Documents/orange/chapter8/a/include/const.h
--'  222  0  ~/proc.c
--'  1  0  ~/proc.c
--'  25  18  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
--'  27  3  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
--'  26  21  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
--'  21  11  ~/.zshrc
--'  1  0  ~/.zshrc
 -'  12  13  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/syscall.asm
 -'  197  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
+-'  23  8  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/global.c
+-'  5  17  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/syscall.asm
+-'  125  17  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  29  18  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  108  21  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  107  17  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  33  12  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  124  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  188  17  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
+-'  24  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proc.h
+-'  55  12  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proc.h
+-'  175  2  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
+-'  81  22  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proto.h
+-'  82  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proto.h
+-'  1  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proto.h
+-'  123  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  126  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  127  39  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  3  28  ~/Code-analysis-of-orange-os/chapter8/IPC/include/const.h
+-'  21  7  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
+-'  117  0  ~/Code-analysis-of-orange-os/chapter8/IPC/Makefile
+-'  19  48  ~/Code-analysis-of-orange-os/chapter8/IPC/Makefile
+-'  1  0  ~/Code-analysis-of-orange-os/chapter8/IPC/Makefile
+-'  1  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/systask.c
+-'  28  4  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
+-'  123  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
+-'  9  16  ~/Code-analysis-of-orange-os/chapter8/IPC/lib/klib.c
+-'  2  13  ~/Code-analysis-of-orange-os/chapter8/IPC/include/protect.h
+-'  3  0  ~/Code-analysis-of-orange-os/chapter8/IPC/include/protect.h
+-'  122  0  ~/Code-analysis-of-orange-os/chapter8/IPC/Makefile
+-'  4  1  ~/Code-analysis-of-orange-os/chapter8/IPC/include/protect.h
+-'  128  1  ~/Code-analysis-of-orange-os/chapter8/IPC/include/protect.h
+-'  33  0  ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/protect.c
+-'  44  7  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proc.h
+-'  27  1  ~/Code-analysis-of-orange-os/chapter8/IPC/include/proc.h
 
 # History of marks within files (newest to oldest):
 
 > ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/proc.c
-	"	82	1
+	"	142	1
 	.	80	0
 	+	200	1
 	+	203	23
@@ -310,111 +303,6 @@ $
 	+	80	31
 	+	80	19
 	+	80	0
-
-> ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/main.c
-	"	81	0
-	^	265	38
-	.	265	37
-	+	181	17
-	+	176	0
-	+	167	59
-	+	166	0
-	+	167	0
-	+	176	0
-	+	40	37
-	+	41	1
-	+	43	21
-	+	45	45
-	+	46	29
-	+	47	47
-	+	49	28
-	+	100	22
-	+	105	23
-	+	103	27
-	+	102	29
-	+	107	0
-	+	64	9
-	+	72	12
-	+	78	11
-	+	107	39
-	+	115	0
-	+	123	0
-	+	107	19
-	+	185	21
-	+	186	1
-	+	190	15
-	+	192	33
-	+	199	19
-	+	199	1
-	+	181	35
-	+	176	0
-	+	181	0
-	+	200	0
-	+	200	0
-	+	181	35
-	+	181	20
-	+	199	1
-	+	181	28
-	+	140	0
-	+	137	0
-	+	150	0
-	+	168	0
-	+	72	12
-	+	181	17
-	+	181	18
-	+	188	10
-	+	199	38
-	+	199	16
-	+	199	37
-	+	199	22
-	+	181	0
-	+	179	23
-	+	199	1
-	+	199	1
-	+	178	36
-	+	180	38
-	+	199	31
-	+	199	31
-	+	199	17
-	+	199	20
-	+	199	16
-	+	199	18
-	+	199	21
-	+	199	16
-	+	199	0
-	+	199	0
-	+	199	1
-	+	199	0
-	+	199	0
-	+	199	0
-	+	200	0
-	+	199	0
-	+	200	0
-	+	185	37
-	+	180	0
-	+	194	13
-	+	195	15
-	+	196	16
-	+	197	15
-	+	180	0
-	+	179	38
-	+	181	15
-	+	197	0
-	+	181	14
-	+	138	42
-	+	128	0
-	+	56	7
-	+	57	7
-	+	81	18
-	+	87	25
-	+	90	25
-	+	105	10
-	+	224	0
-	+	236	0
-	+	266	0
-	+	267	18
-	+	266	0
-	+	265	37
 
 > ~/Code-analysis-of-orange-os/chapter8/IPC/include/proc.h
 	"	62	0
@@ -789,6 +677,22 @@ $
 	+	31	0
 	+	34	0
 	+	33	72
+	+	35	0
+	+	32	1
+	+	33	0
+	+	32	0
+	+	35	0
+	+	33	0
+	+	34	0
+	+	30	12
+	+	29	30
+	+	31	34
+	+	33	37
+	+	28	36
+	+	33	91
+	+	31	0
+	+	34	0
+	+	33	72
 
 > ~/Code-analysis-of-orange-os/chapter8/IPC/kernel/protect.c
 	"	274	0
@@ -796,6 +700,3 @@ $
 	+	272	0
 	+	272	0
 	+	272	0
-
-> ~/main.c
-	"	93	0
